@@ -1,0 +1,45 @@
+.footer{
+    height:80px;
+    display:flex;
+    align-items:center;
+    background-color:#795559;
+    position:bottom;
+    left:0;
+    bottom:0;
+    width:100%;
+    z-index:100;
+    scroll-margin-top:1;
+    margin-bottom:0px;
+    font-size:13px;
+}
+.footer_logo{
+    width:80px;
+    object-fit:contain;
+    margin:0 20px;
+    margin-bottom:5px;
+    display:flex;
+}
+
+
+.Social{
+    margin-left: 40%;
+    margin-right: 10px;
+    font-size:13px;
+    font-weight:800;
+    display:flex;
+}
+.footer_helpLine{
+    
+    margin-left: 90px;
+    align-items: center;
+    font-size:13px;
+    font-weight:800;
+    display:flex;
+}
+.footer_contact{
+    margin-left: 60px;
+    align-items: center;
+    font-size:13px;
+    font-weight:800;
+    display:flex;
+}

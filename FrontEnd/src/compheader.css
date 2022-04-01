@@ -1,0 +1,30 @@
+.vhome_row{
+    display: flex;
+    z-index: 1;
+    margin-left: 5px;
+    margin-top:10px;
+    margin-right: 5px;
+    background-color: white;
+}
+.vhome{
+    display: flex;
+    justify-content:center;
+    max-width: 1500px;
+}
+.vhome_row > table >tr>td{
+    padding: 10px;
+}
+.vhome_row > table >tr >th{
+background-color:#58181F;
+color:white;
+padding: 15px;
+}
+.vhome_row > table >tr>td> button{
+    background: #58181F;
+    border:1px solid;
+    margin-top:10px;
+    width:100%;
+    height:30px;
+    border-color:#58181F #58181F #58181F;
+    color:White;
+}
