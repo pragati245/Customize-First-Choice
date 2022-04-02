@@ -1,5 +1,6 @@
 package com.service;
 
+import java.rmi.NoSuchObjectException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,14 +69,16 @@ public class ProductService {
 		return parepo.getAllprojectaudit();
 	}
 	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
-			int pqty) {
-		return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty);
+			int pqty) throws Exception {
+		try{
+			return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty);
+		}
+		catch (Exception ex){
+			throw new Exception("Adding product failed"+ ex.getMessage());
+		}
 
 	}
-	
-	public int cidReturn(String c_type) {
-		return prepo.cidReturn(c_type);
-	}
+
 	public List<Product> viewOutOfStock(int v_id) {
 		// TODO Auto-generated method stub
 		return prepo.viewOutOfStock(v_id);
