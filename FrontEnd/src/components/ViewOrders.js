@@ -10,7 +10,7 @@ export default class ViewOrders extends React.Component{
         }
     }
     componentDidMount =()=>{
-        fetch("http://localhost:8080/getMyOrder")
+        fetch(process.env.REACT_APP_BASE_URL+"/getMyOrder")
         .then(resp => resp.json())
         .then(data =>{
             {this.setState({to: data})}}

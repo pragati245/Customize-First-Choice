@@ -16,8 +16,8 @@ export default class AddProduct extends React.Component {
             price: "",
             rating: "",
             cat: [],
-            selectedOption:"",
-            selectedOption1:"",
+            selectedOption: "",
+            selectedOption1: "",
             error: {
 
                 titleerr: "",
@@ -27,10 +27,10 @@ export default class AddProduct extends React.Component {
                 qtyerr: "",
                 priceerr: "",
                 ratingerr: ""
-            }
+            },
+            c_types: []
         }
         this.handleOption = this.handleOption.bind(this);
-        this.handleOption1 = this.handleOption1.bind(this);
 
     }
 
@@ -81,12 +81,12 @@ export default class AddProduct extends React.Component {
                     else {
                         if (nm === "qty") {
                             val = input.value;
-                                if (val.length < 1) {
-                                    error.qtyerr = "Invalid Quantity";
-                                }
-                                else {
-                                    error.qtyerr = "";
-                                }
+                            if (val.length < 1) {
+                                error.qtyerr = "Invalid Quantity";
+                            }
+                            else {
+                                error.qtyerr = "";
+                            }
 
                         }
                         else {
@@ -120,38 +120,46 @@ export default class AddProduct extends React.Component {
 
     }
 
-   /* handleOption= selectedOption => {
-        this.setState({ selectedOption });
-        console.log('Option selected:',selectedOption);
-      };*/
-      
-      handleOption(e) {
-        console.log("Selected!");
-        this.setState({ selectedOption: e.target.value });
-        console.log(this.state.selectedOption);
-      }
-      handleOption1(e) {
-        console.log("Selected!!");
-        this.setState({ selectedOption1: e.target.value });
-        console.log(this.state.selectedOption1);
-      }
+    /* handleOption= selectedOption => {
+         this.setState({ selectedOption });
+         console.log('Option selected:',selectedOption);
+       };*/
 
-    submitForm = (e) => {
+    handleOption(e) {
+        this.setState({ selectedOption: e.target.value });
+    }
+
+    submitForm = async (e) => {
         e.preventDefault();
-        //console.log(this.state);
-        let sign=JSON.parse(localStorage.getItem('data1'));
-        console.log(sign.vid);
-        fetch("http://localhost:8080/vaddproduct?cname="+this.state.selectedOption+"&ctype="+this.state.selectedOption1+"&vid="+sign.vid+"&pname="+this.state.title+"&pdesc="+this.state.describe+"&psize="+this.state.size+"&pbrand="+this.state.brand+"&pprice=1"+this.state.price+"&pqty="+this.state.qty)
+        let sign = JSON.parse(localStorage.getItem('data1'));
+        await fetch(process.env.REACT_APP_BASE_URL + "/product/vaddproduct?c_id=" +
+            this.state.selectedOption + "&v_id=" +
+            sign.v_id + "&pname=" +
+            this.state.title + "&pdesc=" +
+            this.state.describe + "&psize=" +
+            this.state.size + "&pbrand=" +
+            this.state.brand + "&pprice=1" +
+            this.state.price + "&pqty=" +
+            this.state.qty)
             .then(resp => resp.json())
             .then(data => this.setState({ st: data, success: true }));
-        window.location.href="/vendor";
+        window.location.href = "/vendor";
     }
     componentDidMount() {
-        fetch('http://localhost:8080/getallcategory')
+        fetch(process.env.REACT_APP_BASE_URL + '/category/getallcategory')
             .then(response => {
                 return response.json();
             }).then(data => {
                 console.log(data);
+                const cType = new Set();
+                data.map(c => {
+                    cType.add(c.c_type)
+                })
+                let ar = []
+                cType.forEach((c_type) => {
+                    ar = [...ar, c_type]
+                })
+                this.setState({ c_types: ar })
                 this.setState({
                     cat: data,
                 });
@@ -164,8 +172,15 @@ export default class AddProduct extends React.Component {
                 <div className='register_container'>
                     <form >
                         {/*<div><select value={selectedOption} onChange={this.handleOption} options={optionItems}>{optionItems}</select></div>*/}
-                        <select value={this.state.value1} onChange={this.handleOption}>{ this.state.cat.map((options) => (<option value1={options.cname}>{options.cname}</option>))}</select>
-                        <select value={this.state.value2} onChange={this.handleOption1}>{ this.state.cat.map((options) => (<option value2={options.ctype}>{options.ctype}</option>))}</select>
+                        <select
+                            // className="form-control"
+                            value={this.state.selectedOption}
+                            onChange={this.handleOption}>
+                            {this.state.cat.map((options) => (
+                                <option value={options.c_id}>{options.c_name} - {options.c_type}</option>
+                            ))}
+                        </select>
+
                         <h5>Product Title</h5><input type='text' name="title" value={this.state.title} onChange={this.handleChange} /><br />
                         <h5>Description</h5><input type='text' name="describe" value={this.state.describe} onChange={this.handleChange} /><br />
                         <h5>Size</h5><input type='text' name="size" value={this.state.size} onChange={this.handleChange} /><br />
@@ -177,7 +192,7 @@ export default class AddProduct extends React.Component {
                     <span>{this.state.error.titleerr}{this.state.error.describeerr}{this.state.error.sizeerr}{this.state.error.branderr}<br />
                         {this.state.error.imageerr}{this.state.error.priceerr}</span>
                 </div>
-            </div>
+            </div >
 
         )
     }

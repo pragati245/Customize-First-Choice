@@ -24,7 +24,7 @@ export default class AddProduct extends React.Component {
         console.log(this.state.cname);
 
     }
-    submitForm = (e) => {
+    submitForm = async (e) => {
         e.preventDefault();
     const reqData = {
         method: 'POST',
@@ -32,13 +32,13 @@ export default class AddProduct extends React.Component {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            cname: this.state.cname,
-            ctype: this.state.ctype,
+            c_name: this.state.cname,
+            c_type: this.state.ctype,
            
         })
     };
 
-    fetch("http://localhost:8080/savecategory",reqData)
+    await fetch(process.env.REACT_APP_BASE_URL+"/category/addcategory",reqData)
     .then(resp => resp.json())
     .then(data => this.setState({st: data, success: true}));
     window.location.href="/admin";
@@ -50,8 +50,8 @@ export default class AddProduct extends React.Component {
                     <form >
                         <h5>Category Name</h5><input type="text" name="cname" value={this.state.cname} onChange={this.handleChange1} /><br />
                             <div className="category_type">
-                            <h5>Category Type</h5><input type="radio" value="M" id="F" onChange={this.handleChange} name="ctype" /><label for="M">M</label>
-                            <input type="radio" value="F" id="F" onChange={this.handleChange} name="ctype"/><label for="F">F</label><br />
+                            <h5>Category Type</h5><input type="radio" value="STITCHED" id="STITCHED" onChange={this.handleChange} name="ctype" /><label for="STITCHED">STITCHED</label>
+                            <input type="radio" value="RAW" id="RAW" onChange={this.handleChange} name="ctype"/><label for="RAW">RAW</label><br />
                             </div>
                         <Link to="/admin"> <button className='innerbutton' type="submit" value="Submit" onClick={this.submitForm}>Add Category</button></Link><br />
                     </form>

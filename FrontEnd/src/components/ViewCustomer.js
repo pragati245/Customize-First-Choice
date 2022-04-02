@@ -10,7 +10,7 @@ export default class ViewCustomer extends React.Component{
         }
     }
     componentDidMount =()=>{
-        fetch("http://localhost:8080/getallcustomer")
+        fetch(process.env.REACT_APP_BASE_URL+"/user/getalluser")
         .then(resp => resp.json())
         .then(data =>this.setState({to: data}));
                 
@@ -37,13 +37,13 @@ export default class ViewCustomer extends React.Component{
                             (o) => {
                                 return(
                                     <tr>
-                                        <td>{o.uid}</td>
-                                        <td>{o.ufname}</td>
-                                        <td>{o.ulname}</td>
-                                        <td>{o.uemail}</td>
-                                        <td>{o.uaddress}</td>
-                                        <td>{o.ucontactno}</td>
-                                        <td>{o.uwallet}</td>
+                                        <td>{o.u_id}</td>
+                                        <td>{o.u_fname}</td>
+                                        <td>{o.u_lname}</td>
+                                        <td>{o.u_email}</td>
+                                        <td>{o.u_address}</td>
+                                        <td>{o.u_phone}</td>
+                                        <td>{o.wallet}</td>
                                     </tr>
                                 );
                             }

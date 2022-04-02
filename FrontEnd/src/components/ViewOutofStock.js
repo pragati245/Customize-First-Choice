@@ -12,7 +12,7 @@ export default class ViewOutofStock extends React.Component{
     componentDidMount =()=>{
         let sign=JSON.parse(localStorage.getItem('data1'));
         console.log(sign.vid);
-        fetch("http://localhost:8080/viewoutofstock?vid="+sign.vid)
+        fetch(process.env.REACT_APP_BASE_URL+"/product/viewoutofstock?v_id="+sign.v_id)
         .then(resp => resp.json())
         .then(data =>this.setState({to: data}));
                 
@@ -35,7 +35,6 @@ export default class ViewOutofStock extends React.Component{
                         <th>Product Price</th>
                         <th>Product Rating</th>
                         <th>Product Quantity</th>
-                        <th>Product Approval</th>
                     </tr>
                     {
                         this.state.to.map(
@@ -50,7 +49,6 @@ export default class ViewOutofStock extends React.Component{
                                         <td>{o.pprice}</td>
                                         <td>{o.prating}</td>
                                         <td>{o.pqty}</td>
-                                        <td>{o.papprove}</td>
                                     </tr>
                                 );
                             }

@@ -12,8 +12,9 @@ export default class Home extends React.Component{
             to: []
         }
     }
+   
     componentDidMount =()=>{
-        fetch("http://localhost:8080/getallproducts")
+        fetch(process.env.REACT_APP_BASE_URL+"/product/getallproducts")
         .then(resp => resp.json())
         .then(data => this.setState({to: data}));
         
@@ -21,6 +22,7 @@ export default class Home extends React.Component{
 
     }
     render(){
+        console.log(process.env.REACT_APP_BASE_URL)
     return (
         <div className='home'>
            <div className='home_container'>
@@ -29,14 +31,14 @@ export default class Home extends React.Component{
                 {
                         this.state.to.map(
                             (o) => {
-                                if(o.papprove==="true")
-                                {
+                                // if(o.papprove==="true")
+                                // {
                                     return(
                                         <div className='home_row'>
                                             <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating}/>
                                         </div>
                                     );
-                                }
+                                // }
                             }
                         )
                 }            

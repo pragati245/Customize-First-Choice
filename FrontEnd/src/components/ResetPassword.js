@@ -17,7 +17,7 @@ function ForgetPassword() {
         }
         const sign=JSON.parse(localStorage.getItem('data2'));
         //console.log(sign,pwd);
-        const url = "http://localhost:8080/resetpwd?uid="+sign.uid+"&newpwd="+pwd;
+        const url = process.env.REACT_APP_BASE_URL+"/resetpwd?uid="+sign.uid+"&newpwd="+pwd;
         //alert(url);
         fetch(url)
                 .then(response => response.json())

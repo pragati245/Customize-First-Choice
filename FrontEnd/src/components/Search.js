@@ -28,7 +28,7 @@ class Search extends React.Component{
                 })
         };
 
-        fetch("http://localhost:8080/searchbykeyword",reqData)
+        fetch(process.env.REACT_APP_BASE_URL+"/searchbykeyword",reqData)
         .then(resp => resp.json())
         .then(data => 
             {if(data.length!=0)

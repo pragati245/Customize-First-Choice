@@ -18,7 +18,7 @@ export default class ViewOrderbyuid extends React.Component{
         else
         {
             console.log(sign.uid);
-        fetch("http://localhost:8080/getorderdatafromuid?uid="+sign.uid)
+        fetch(process.env.REACT_APP_BASE_URL+"/getorderdatafromuid?uid="+sign.uid)
         .then(resp => resp.json())
         .then(data =>{console.log(data);
             {this.setState({to: data})}}

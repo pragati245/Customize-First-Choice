@@ -9,7 +9,7 @@ export default class ViewProducts extends React.Component {
         }
     }
     componentDidMount = () => {
-        fetch("http://localhost:8080/getallproducts")
+        fetch(process.env.REACT_APP_BASE_URL+"/product/getallproducts")
             .then(resp => resp.json())
             .then(data => this.setState({ to: data }));
 

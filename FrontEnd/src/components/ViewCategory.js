@@ -9,7 +9,7 @@ export default class ViewCategory extends React.Component {
         }
     }
     componentDidMount = () => {
-        fetch("http://localhost:8080/getallcategory")
+        fetch(process.env.REACT_APP_BASE_URL+"/category/getallcategory")
             .then(resp => resp.json())
             .then(data => this.setState({ to: data }));
 
@@ -32,9 +32,9 @@ export default class ViewCategory extends React.Component {
                                         (o) => {
                                             return (
                                                 <tr>
-                                                    <td>{o.cid}</td>
-                                                    <td>{o.cname}</td>
-                                                    <td>{o.ctype}</td>
+                                                    <td>{o.c_id}</td>
+                                                    <td>{o.c_name}</td>
+                                                    <td>{o.c_type}</td>
                                                 </tr>
                                             );
                                         }

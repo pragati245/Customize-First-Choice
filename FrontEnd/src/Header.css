@@ -80,3 +80,12 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+  .searchBtn{
+      border: 1px solid #6e1230;
+      color:#6e1230;
+      background-color: #FFFF;
+      border-radius:4px
+  }
+  .searchBtn:focus{
+     outline: none;
+  }

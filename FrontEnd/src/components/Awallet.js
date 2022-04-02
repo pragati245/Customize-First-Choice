@@ -27,7 +27,7 @@ export default class ViewOrderbyuid extends React.Component{
                          <div className='register_container'>
                              <h2>Wallet</h2><br/>
                              <form >
-                                 <h5>Amount in wallet : {this.state.sign.awallet}</h5><br/>
+                                 <h5>Amount in wallet : {this.state.sign.a_wallet}</h5><br/>
                     
                              </form>
                          </div>

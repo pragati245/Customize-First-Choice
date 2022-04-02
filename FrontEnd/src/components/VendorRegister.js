@@ -149,7 +149,7 @@ export default class VendorRegister extends React.Component{
         this.setState({error,[nm]: val})
 
     }
-   submitForm = (e)=>{
+   submitForm = async (e)=>{
     e.preventDefault();
     //console.log(this.state);
     const reqData = {
@@ -158,20 +158,18 @@ export default class VendorRegister extends React.Component{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            vfname: this.state.fname,
-            vlname: this.state.lname,
-            vcontactno: this.state.contactno,
-            vaddress: this.state.address,
-            vemail: this.state.email,
-            vpassword : this.state.password,
-            uniqueid:this.state.uniqueid
+            v_name: this.state.fname,
+            v_phone: this.state.contactno,
+            v_address: this.state.address,
+            v_email: this.state.email,
+            v_password : this.state.password,
         })
     };
 
-    fetch("http://localhost:8080/registervendor",reqData)
+    await fetch(process.env.REACT_APP_BASE_URL+"/vendor/addvendor",reqData)
     .then(resp => resp.json())
     .then(data => this.setState({st: data, success: true}));
-    window.location.href="/vendorlogin";
+    // window.location.href="/vendorlogin";
        
     }
     render(){
@@ -183,9 +181,8 @@ export default class VendorRegister extends React.Component{
             <div className='register_container'>
                 <h1>Sign-up</h1>
                 <form >
-                    <h5>Unique Id</h5><input type='number' name="uniqueid" value={this.state.uniqueid} onChange={this.handleChange}/><br/>
+                    {/* <h5>Unique Id</h5><input type='number' name="uniqueid" value={this.state.uniqueid} onChange={this.handleChange}/><br/> */}
                     <h5>First Name</h5><input type='text' name="fname" value={this.state.fname} onChange={this.handleChange}/><br/>
-                    <h5>Last Name</h5><input type='text' name="lname" value={this.state.lname} onChange={this.handleChange}/><br/>
                     <h5>Email</h5><input type='text' name="email" value={this.state.email} onChange={this.handleChange}/><br/>
                     <h5>Address</h5><input type='text' name="address" value={this.state.address} onChange={this.handleChange}/><br/>
                     <h5>Contact Number</h5><input type='number'name="contactno" value={this.state.contactno} onChange={this.handleChange}/><br/>

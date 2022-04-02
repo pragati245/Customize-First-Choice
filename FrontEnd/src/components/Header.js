@@ -77,14 +77,15 @@ function Header() {
                         <Nav.Link href="/women" style={{ color: "#6e1230" }}>Stitched</Nav.Link>
 
                     </Nav>
-                    <Form className="d-flex">
+                    <Form className="d-flex" onSubmit={() => (setText(textInput.current.value))}>
                         <FormControl
                             type="search"
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
+                            ref={textInput}
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <button className="searchBtn">Search</button>
                     </Form>
                     <Nav.Link href={!sign && "/login"}>
                         <div className='header_option'>
@@ -99,11 +100,11 @@ function Header() {
                     </Nav.Link>
                     <Nav.Link href="/wallet">
                         {/* <p className='header_category'>Wallet</p> */}
-                        <AccountBalanceWalletIcon fontSize="large" style={{ color: "#6e1230" }}/>
+                        <AccountBalanceWalletIcon fontSize="large" style={{ color: "#6e1230" }} />
                     </Nav.Link>
                     <Nav.Link href="/checkout">
                         <div className='header_optionBasket'>
-                            <ShoppingCartIcon fontSize="large" style={{ color: "#6e1230" }}/>
+                            <ShoppingCartIcon fontSize="large" style={{ color: "#6e1230" }} />
                             <span className='header_optionLineTwo header_basketCount' style={{ color: "#6e1230" }}>{basket?.length}</span>
                         </div>
                     </Nav.Link>

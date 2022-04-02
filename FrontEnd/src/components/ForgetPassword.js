@@ -8,7 +8,7 @@ function ForgetPassword() {
     const proceed= ()=>{
         localStorage.setItem('text1',textInput1.current.value);
         const number=JSON.parse(localStorage.getItem('text1'));
-        const url = "http://localhost:8080/forgotpwdcust?ucontactno="+number;
+        const url = process.env.REACT_APP_BASE_URL+"/forgotpwdcust?ucontactno="+number;
         fetch(url)
                 .then(response => response.json())
                 .then(data => 

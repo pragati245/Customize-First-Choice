@@ -14,7 +14,7 @@ class MenCategory extends React.Component{
         }
     }
     componentDidMount =()=>{
-        fetch("http://localhost:8080/men")
+        fetch(process.env.REACT_APP_BASE_URL+"/men")
         .then(resp => resp.json())
         .then(data => 
             {if(data.length!=0)

@@ -13,7 +13,7 @@ class WomenCategory extends React.Component{
         }
     }
     componentDidMount =()=>{
-        fetch("http://localhost:8080/women")
+        fetch(process.env.REACT_APP_BASE_URL+"/women")
         .then(resp => resp.json())
         .then(data => 
             {if(data.length!=0)

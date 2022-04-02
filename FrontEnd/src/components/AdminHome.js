@@ -13,17 +13,17 @@ export default class AdminHome extends React.Component {
         this.accept = this.accept.bind(this);
     }
     componentDidMount = () => {
-        fetch("http://localhost:8080/getallvendoraudit")
-            .then(resp => resp.json())
-            .then(data => this.setState({ to: data }));
-        fetch("http://localhost:8080/getallproductaudit")
-            .then(resp => resp.json())
-            .then(data => this.setState({ to1: data }));
+        // fetch(process.env.REACT_APP_BASE_URL+"/getallvendoraudit")
+        //     .then(resp => resp.json())
+        //     .then(data => this.setState({ to: data }));
+        // fetch(process.env.REACT_APP_BASE_URL+"/getallproductaudit")
+        //     .then(resp => resp.json())
+        //     .then(data => this.setState({ to1: data }));
 
     }
     accept = (e) => {
         console.log("in accept");
-        const url = "http://localhost:8080/vendorstatusaction?vid=" + e + "&action=yes"
+        const url = process.env.REACT_APP_BASE_URL+"/vendorstatusaction?vid=" + e + "&action=yes"
         fetch(url)
             .then(resp => resp.text())
             .then(data => this.setState({ t: data }));
@@ -31,7 +31,7 @@ export default class AdminHome extends React.Component {
     }
     deny = (e) => {
         console.log("in deny");
-        const url = "http://localhost:8080/vendorstatusaction?vid=" + e + "&action=No"
+        const url = process.env.REACT_APP_BASE_URL+"/vendorstatusaction?vid=" + e + "&action=No"
         fetch(url)
             .then(resp => resp.text())
             .then(data => this.setState({ t: data }));
@@ -40,7 +40,7 @@ export default class AdminHome extends React.Component {
 
     accept1 = (e1, e2, e3) => {
         console.log("in accept1");
-        const url = "http://localhost:8080/productstatusaction?pid=" + e1 + "&pprice=" + e2 + "&pqty=" + e3 + "&action=yes"
+        const url = process.env.REACT_APP_BASE_URL+"/productstatusaction?pid=" + e1 + "&pprice=" + e2 + "&pqty=" + e3 + "&action=yes"
         fetch(url)
             .then(resp => resp.text())
             .then(data => this.setState({ t: data }));
@@ -48,7 +48,7 @@ export default class AdminHome extends React.Component {
     }
     deny1 = (e1, e2, e3) => {
         console.log("in deny1");
-        const url = "http://localhost:8080/productstatusaction?pid=" + e1 + "&pprice=" + e2 + "&pqty=" + e3 + "&action=No"
+        const url = process.env.REACT_APP_BASE_URL+"/productstatusaction?pid=" + e1 + "&pprice=" + e2 + "&pqty=" + e3 + "&action=No"
         fetch(url)
             .then(resp => resp.text())
             .then(data => this.setState({ t: data }));

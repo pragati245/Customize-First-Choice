@@ -38,7 +38,7 @@ function Payment()
         };
         console.log(sign);
         console.log(reqData);
-        fetch("http://localhost:8080/saveMyOrder",reqData)
+        fetch(process.env.REACT_APP_BASE_URL+"/saveMyOrder",reqData)
         .then(resp => resp.json())
         .then(data => setData(data));
         window.location.href="/placed";

@@ -18,7 +18,7 @@ export default class AddMoney extends React.Component {
 
     }
     submitForm = (e) => {
-        const url = "http://localhost:8080/addmoneytowallet?uid=" + this.state.sign.uid + "&amount=" + this.state.cname;
+        const url = process.env.REACT_APP_BASE_URL+"/addmoneytowallet?uid=" + this.state.sign.uid + "&amount=" + this.state.cname;
         fetch(url)
                 .then(response => response.json())
                 .then(data => 

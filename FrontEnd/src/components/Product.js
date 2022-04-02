@@ -26,8 +26,8 @@ function Product({id,title,describe,size,brand,price,image,rating}) {
         <div className='product'>
             <img className='product_img' src={image} alt="productImg"/>
             <div className='product_info'>
-               {/* <p>{title}</p>
-               <p>{x}</p>*/}
+               <p>{title}</p>
+               {/* <p>{x}</p> */}
                 <p>{describe}</p>
                 <p>{size}</p>
                 <p>{brand}</p>
