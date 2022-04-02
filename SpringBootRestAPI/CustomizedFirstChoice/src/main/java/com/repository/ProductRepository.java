@@ -32,7 +32,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	@Modifying
 	@Query(value = "update product set papprove='true',pprice=pprice*0.1 where p_id=?1", nativeQuery = true)
-	public void productadd(int p_id);
+	public int productadd(int p_id);
 
 	@Modifying
 	@Query(value = "delete from product where p_id=?1", nativeQuery = true)
@@ -42,8 +42,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	public int cidReturn(String c_type);
 
 	@Modifying
-	@Query(value = "insert into product(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty)	values(?1,?2,?3,?4,?5,?6,?7,?8)", nativeQuery = true)
-	public void vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
+	@Query(value = "insert into product(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty,prating)	values(?1,?2,?3,?4,?5,?6,?7,?8,3)", nativeQuery = true)
+	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
 			int pqty);
 
 	@Query(value = "select * from product where pqty=?0 AND v_id=?1", nativeQuery = true)

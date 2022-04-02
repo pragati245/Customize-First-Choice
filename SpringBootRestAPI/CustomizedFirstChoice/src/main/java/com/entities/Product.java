@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Table
 @Entity
-
 public class Product {
 	@Id
 	@GeneratedValue
@@ -59,20 +58,19 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int p_id, String pname, String pdesc, String psize, int prating, int pqty, float pprice,
+	public Product(String pname, String pdesc, String psize, int pqty, float pprice,
 			String pbrand, String papprove, Category cat, Vendor vdr, List<MyOrder> myorders) {
 		super();
-		this.p_id = p_id;
 		this.pname = pname;
 		this.pdesc = pdesc;
 		this.psize = psize;
-		this.prating = prating;
+		this.prating = 3;
 		this.pqty = pqty;
 		this.pprice = pprice;
 		this.pbrand = pbrand;
 		this.cat = cat;
 		this.vdr = vdr;
-		this.myorders = myorders;
+//		this.myorders = myorders;
 	}
 
 	public int getP_id() {
@@ -166,7 +164,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [p_id=" + p_id + ", pname=" + pname + ", pdesc=" + pdesc + ", psize=" + psize + ", prating="
-				+ prating + ", pqty=" + pqty + ", pprice=" + pprice + ", pbrand=" + pbrand + ",cat=" + cat + ", vdr=" + vdr + ", myorders=" + myorders + "]";
+				+ prating + ", pqty=" + pqty + ", pprice=" + pprice + ", pbrand=" + pbrand + ",cat=" + cat + ", vdr=" + vdr;
 	}
 	
     

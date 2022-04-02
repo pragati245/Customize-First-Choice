@@ -23,12 +23,13 @@ public class ProductController {
 	@GetMapping("/getallproducts")
 	public List<Product> getAllProducts() {
 		return pservice.getAllProducts();
-		
 	}
+
 	@GetMapping("/getallproductaudit")
 	public List<ProductAudit> getAllProductAudit() {
 		return pservice.getAllProductAudit();
 	}
+
 	@PostMapping("/addproduct")
 	public Product save(@RequestBody Product p) {
 		return pservice.save(p);
@@ -38,6 +39,7 @@ public class ProductController {
 	public List<Product> getByCategoryId(@RequestParam("c_id") int c_id) {
 		return pservice.getByCategoryId(c_id);
 	}
+
 	@PostMapping("/searchbykeyword")
 	public List<Product> searchbykeyword(@RequestBody Product p) {
 		return pservice.searchbykeyword(p.getPname(), p.getPbrand(), p.getPdesc());
@@ -46,27 +48,32 @@ public class ProductController {
 	public List<Product> getAllMen() {
 		return pservice.getAllMen();
 	}
+
 	@GetMapping("/women")
 	public List<Product> getAllWomen() {
 		return pservice.getAllWomen();
 	}
+
 	@GetMapping("/viewbyvid")
 	public List<Product> getByVid(@RequestParam("v_id")int v_id){
 		return pservice.getByVid(v_id);
 	}
+
 	@GetMapping("/productstatusaction")
 	public void productStatusAction(@RequestParam("p_id") int p_id,@RequestParam("pprice") float pprice,@RequestParam("pqty") int pqty,@RequestParam("action") String action)
 	{
 		pservice.productStatusAction(p_id,pprice,pqty,action);
 	}
+
 	@GetMapping("/vaddproduct")
-	public void vaddproduct(@RequestParam("c_type")String c_type, @RequestParam("v_id") int v_id,
+	public int vaddproduct(@RequestParam("c_type")String c_type, @RequestParam("v_id") int v_id,
 			@RequestParam("pname") String pname, @RequestParam("pdesc") String pdesc,
 			@RequestParam("psize") String psize, @RequestParam("pbrand") String pbrand,
 			@RequestParam("pprice") float pprice, @RequestParam("pqty") int pqty) {
 		int cid = pservice.cidReturn(c_type);
-		pservice.vaddproduct(cid, v_id, pname, pdesc, psize, pbrand, pprice, pqty);
+		return pservice.vaddproduct(cid, v_id, pname, pdesc, psize, pbrand, pprice, pqty);
 	}
+
 	@GetMapping("/viewoutofstock")
 	public List<Product> viewOutOfStock(@RequestParam("v_id") int v_id)
 	{

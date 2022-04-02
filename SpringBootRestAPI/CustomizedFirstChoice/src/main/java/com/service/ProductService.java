@@ -67,9 +67,10 @@ public class ProductService {
 	public List<ProductAudit> getAllProductAudit() {
 		return parepo.getAllprojectaudit();
 	}
-	public void vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
+	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
 			int pqty) {
-		prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty);
+		return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty);
+
 	}
 	
 	public int cidReturn(String c_type) {

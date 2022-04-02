@@ -1,22 +1,25 @@
 package com.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table
 @Entity
-
 public class Category {
 
 	@Id
+	@GeneratedValue
 	private int c_id;
 	
 	private String c_type;
+
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public Category(int c_id, String c_type) {
 		super();
 		this.c_id = c_id;
