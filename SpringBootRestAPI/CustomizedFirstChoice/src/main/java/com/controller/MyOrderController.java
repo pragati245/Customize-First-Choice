@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+import com.models.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class MyOrderController {
 	MyOrderService moservice;
 	
 	@PostMapping("/saveMyOrder")
-	public MyOrder addMyOrder(@RequestBody MyOrder mo) {
+	public MyOrder addMyOrder(@RequestBody Order mo) {
 		return moservice.addMyOrder(mo); 
 	}
 	

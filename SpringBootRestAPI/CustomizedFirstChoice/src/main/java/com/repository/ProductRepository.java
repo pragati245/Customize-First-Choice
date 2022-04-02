@@ -17,11 +17,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "select * from product where pname=?1 or pbrand=?2 or pdesc=?3", nativeQuery = true)
 	public List<Product> searchbykeyword(String pname, String pbrand, String pdesc);
 
-	@Query(value = "select * from product where c_id in(select c_id from category where c_type='M')", nativeQuery = true)
-	public List<Product> getAllMen();
+	@Query(value = "select * from product where c_id in(select c_id from category where c_type='RAW')", nativeQuery = true)
+	public List<Product> getAllRaw();
 
-	@Query(value = "select * from product where c_id in(select c_id from category where c_type='F')", nativeQuery = true)
-	public List<Product> getAllWomen();
+	@Query(value = "select * from product where c_id in(select c_id from category where c_type='STITCHED')", nativeQuery = true)
+	public List<Product> getAllStitched();
 
 	@Query(value = "select * from product where v_id =?1", nativeQuery = true)
 	public List<Product> getByVid(int v_id);

@@ -44,14 +44,14 @@ public class ProductController {
 	public List<Product> searchbykeyword(@RequestBody Product p) {
 		return pservice.searchbykeyword(p.getPname(), p.getPbrand(), p.getPdesc());
 	}
-	@GetMapping("/men")
-	public List<Product> getAllMen() {
-		return pservice.getAllMen();
+	@GetMapping("/raw")
+	public List<Product> getAllRaw() {
+		return pservice.getAllRaw();
 	}
 
-	@GetMapping("/women")
-	public List<Product> getAllWomen() {
-		return pservice.getAllWomen();
+	@GetMapping("/stitched")
+	public List<Product> getAllStitched() {
+		return pservice.getAllStitched();
 	}
 
 	@GetMapping("/viewbyvid")

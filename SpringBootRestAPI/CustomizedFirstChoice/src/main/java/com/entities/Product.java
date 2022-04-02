@@ -3,15 +3,7 @@ package com.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Product {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int p_id;
 	
 	private String pname;
@@ -49,9 +41,14 @@ public class Product {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Vendor vdr;
 	
-	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private List<MyOrder> myorders = new ArrayList<MyOrder>();
+//	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+//	@JsonProperty(access = Access.WRITE_ONLY)
+//	private List<MyOrder> myorders = new ArrayList<MyOrder>();
+
+
+	@OneToMany(mappedBy = "product")
+//	@JsonProperty(access = Access.WRITE_ONLY)
+	private List<MyOrderProductMapping> orderAssoc;
 
 	public Product() {
 		super();
@@ -153,12 +150,21 @@ public class Product {
 		this.vdr = vdr;
 	}
 
-	public List<MyOrder> getMyorders() {
-		return myorders;
+//	public List<MyOrder> getMyorders() {
+//		return myorders;
+//	}
+//
+//	public void setMyorders(List<MyOrder> myorders) {
+//		this.myorders = myorders;
+//	}
+
+
+	public List<MyOrderProductMapping> getOrderAssoc() {
+		return orderAssoc;
 	}
 
-	public void setMyorders(List<MyOrder> myorders) {
-		this.myorders = myorders;
+	public void setOrderAssoc(List<MyOrderProductMapping> orderAssoc) {
+		this.orderAssoc = orderAssoc;
 	}
 
 	@Override

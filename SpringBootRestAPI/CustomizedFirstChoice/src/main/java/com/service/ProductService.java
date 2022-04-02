@@ -1,6 +1,5 @@
 package com.service;
 
-import java.rmi.NoSuchObjectException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +37,11 @@ public class ProductService {
 		return prepo.searchbykeyword(pname, pbrand, pdesc);
 		
 	}
-	public List<Product> getAllMen() {
-		return prepo.getAllMen();
+	public List<Product> getAllRaw() {
+		return prepo.getAllRaw();
 	}
-	public List<Product> getAllWomen() {
-		return prepo.getAllWomen();
+	public List<Product> getAllStitched() {
+		return prepo.getAllStitched();
 	}
 	public List<Product> getByVid(int v_id) {
 		return prepo.getByVid(v_id);
