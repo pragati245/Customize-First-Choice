@@ -13,15 +13,15 @@ public class AdminService
 	@Autowired
 	private AdminRepository adminrepo;
 	
-	public ResponseEntity<Admin> loginAdmin(Admin admin) 
+	public ResponseEntity<Boolean> loginAdmin(Admin admin)
 	{
 		// TODO Auto-generated method stub
 		Admin admin1=adminrepo.findByEmail(admin.getA_email(),admin.getA_password());
 		
-		if(admin1.getA_email().equals(admin.getA_email())&&admin1.getA_password().equals(admin.getA_password()))
-			return new ResponseEntity<Admin>(admin,HttpStatus.ACCEPTED);
+		if(admin1!= null && admin1.getA_email().equals(admin.getA_email())&&admin1.getA_password().equals(admin.getA_password()))
+			return new ResponseEntity<Boolean>(true,HttpStatus.ACCEPTED);
 		else
-				return new ResponseEntity<>(HttpStatus.FORBIDDEN);		
+				return new ResponseEntity<>(false,HttpStatus.FORBIDDEN);
 	}	
 
 }
