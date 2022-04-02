@@ -21,12 +21,9 @@ public class AdminController {
 	AdminService aservice;
 
 	@PostMapping("/adminlogin")
-	public ResponseEntity<Admin> loginAdmin(@RequestBody Admin admin)
+	public ResponseEntity<Boolean> loginAdmin(@RequestBody Admin admin)
 	{
-
-			//return new ResponseEntity<>(HttpStatus.OK);
 			return aservice.loginAdmin(admin);
-
 	}
 
 }
