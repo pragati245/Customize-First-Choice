@@ -7,11 +7,12 @@ import CheckoutProduct from './CheckoutProduct.js';
 
 function Checkout() {
     const [{basket}]=useStateValue();
+    console.log(basket)
     let sign=JSON.parse(localStorage.getItem('data1'));
     return (
         <div className="checkout">
             <div className='checkout_left'>
-                <img className='checkout_ad' src={baner} alter="baner"/>
+                {/* <img className='checkout_ad' src={baner} alter="baner"/> */}
                 <div>
                     <h3> Hello {!sign ?'User':sign.ufname}</h3>
                     <h4 className='checkout_title'>Your Shopping Basket</h4>

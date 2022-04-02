@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import { Form } from "react-bootstrap";
 import Logo from '../assets/img/Logo.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -187,6 +188,9 @@ export default class Register extends React.Component {
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Link to="register" ><button className='innerbutton' type="submit" onClick={this.submitForm}>Sign Up</button></Link><br />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
                     </Form.Group>
                     <span>{this.state.error.emailerr}{this.state.error.fnameerr}{this.state.error.lnameerr}{this.state.error.addresserr}<br />
                         {this.state.error.pwderr}{this.state.error.contactnoerr}</span>

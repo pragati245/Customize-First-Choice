@@ -2,6 +2,10 @@ import React from 'react';
 import '../register.css';
 import {Link ,useHistory} from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
+import { Form } from "react-bootstrap";
+import Logo from '../assets/img/Logo.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 export default class VendorRegister extends React.Component{
     constructor(props){
         super(props);
@@ -176,12 +180,12 @@ export default class VendorRegister extends React.Component{
     return (
         <div className='register'>
              <Link to="/">
-            <HomeIcon className='register_homeIcon'/>{/*<img className='login_img' src={logo} alt='logo'/>*/}
+            {/* <HomeIcon className='register_homeIcon'/> */}
+            <img className='login_img' src={Logo} alt='logo' />
             </Link>
             <div className='register_container'>
                 <h1>Sign-up</h1>
-                <form >
-                    {/* <h5>Unique Id</h5><input type='number' name="uniqueid" value={this.state.uniqueid} onChange={this.handleChange}/><br/> */}
+                {/* <form >
                     <h5>First Name</h5><input type='text' name="fname" value={this.state.fname} onChange={this.handleChange}/><br/>
                     <h5>Email</h5><input type='text' name="email" value={this.state.email} onChange={this.handleChange}/><br/>
                     <h5>Address</h5><input type='text' name="address" value={this.state.address} onChange={this.handleChange}/><br/>
@@ -189,7 +193,37 @@ export default class VendorRegister extends React.Component{
                     <h5>Password</h5><input type='password' name="password" value={this.state.password} onChange={this.handleChange}/><br/>
                     <h5>Retype-Password</h5><input type='password' name="repassword" value={this.state.repassword} onChange={this.handleChange}/><br/>
                     <Link to="/vendorlogin" > <button className='innerbutton' type="submit" value="Submit" onClick={this.submitForm}>Sign Up</button></Link><br/>
-                </form>
+                </form> */}
+                <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter First Name" name="fname" value={this.state.fname} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Address" name="address" value={this.state.address} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>Contact Number</Form.Label>
+                        <Form.Control type="text" placeholder="Enter ontact Number" name="contactno" value={this.state.contactno} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Form.Label>Retype-Password</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Retype-Password" name="repassword" value={this.state.repassword} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Link to="/register" ><button className='innerbutton' type="submit" onClick={this.submitForm}>Sign Up</button></Link><br />
+                    </Form.Group>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Link to="/vendorlogin" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
+                    </Form.Group>
                 <span>{this.state.error.emailerr}{this.state.error.fnameerr}{this.state.error.lnameerr}{this.state.error.addresserr}<br/>
                 {this.state.error.pwderr}{this.state.error.contactnoerr}</span>
             </div>

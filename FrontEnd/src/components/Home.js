@@ -3,6 +3,7 @@ import '../Home.css';
 import baner from '../BGIMG.png';
 import Photo2 from '../Photo2.jpg';
 import Product from './Product.js';
+import {Container } from 'react-bootstrap';
 
 export default class Home extends React.Component{
     constructor(props)
@@ -25,8 +26,8 @@ export default class Home extends React.Component{
         console.log(process.env.REACT_APP_BASE_URL)
     return (
         <div className='home'>
-           <div className='home_container'>
-               <img className='home_img' src={baner} alt="baner"/>
+           <Container className='mt-3'>
+               {/* <img className='home_img' src={baner} alt="baner"/> */}
                 
                 {
                         this.state.to.map(
@@ -34,7 +35,7 @@ export default class Home extends React.Component{
                                 // if(o.papprove==="true")
                                 // {
                                     return(
-                                        <div className='home_row'>
+                                        <div className=''>
                                             <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating}/>
                                         </div>
                                     );
@@ -43,7 +44,7 @@ export default class Home extends React.Component{
                         )
                 }            
                
-           </div>
+           </Container>
         </div>
     )
 }

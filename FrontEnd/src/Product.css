@@ -38,3 +38,10 @@
 .product_rating{
     display:flex;
 }
+.addToCartBtn{
+    background-color: #6e1230;
+    border: 1px solid transparent;
+    color: white;
+    padding:8px;
+    border-radius: 8px;
+}

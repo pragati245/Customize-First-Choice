@@ -4,6 +4,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import Logo from '../assets/img/Logo.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 class VendorLogin extends React.Component {
 
@@ -111,6 +112,9 @@ class VendorLogin extends React.Component {
                     <p>By signing in you will agree all the terms & condition by SAPIENS</p>
                     <button type="submit" className='innerbutton' onClick={this.signIn}>Sign In</button><br />
                     <Link to="/vendorregister" ><button className='innerbutton'> Create your Vendor's Sapiens Account</button></Link>
+                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                        <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
+                    </Form.Group>
                 </div>
             </div>
 
