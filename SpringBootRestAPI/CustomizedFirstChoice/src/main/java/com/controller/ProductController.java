@@ -66,12 +66,11 @@ public class ProductController {
 	}
 
 	@GetMapping("/vaddproduct")
-	public int vaddproduct(@RequestParam("c_type")String c_type, @RequestParam("v_id") int v_id,
+	public int vaddproduct(@RequestParam("c_id")int c_id, @RequestParam("v_id") int v_id,
 			@RequestParam("pname") String pname, @RequestParam("pdesc") String pdesc,
 			@RequestParam("psize") String psize, @RequestParam("pbrand") String pbrand,
-			@RequestParam("pprice") float pprice, @RequestParam("pqty") int pqty) {
-		int cid = pservice.cidReturn(c_type);
-		return pservice.vaddproduct(cid, v_id, pname, pdesc, psize, pbrand, pprice, pqty);
+			@RequestParam("pprice") float pprice, @RequestParam("pqty") int pqty) throws Exception {
+		return pservice.vaddproduct(c_id, v_id, pname, pdesc, psize, pbrand, pprice, pqty);
 	}
 
 	@GetMapping("/viewoutofstock")

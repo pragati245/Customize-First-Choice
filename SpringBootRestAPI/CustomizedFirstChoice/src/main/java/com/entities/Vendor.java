@@ -18,6 +18,8 @@ public class Vendor {
 	private String v_address;
 	private String v_email;
 	private String v_password;
+	private Boolean v_status= false;
+	private float v_wallet =0f;
 	
 	public Vendor() {
 		super();
@@ -32,6 +34,8 @@ public class Vendor {
 		this.v_address = v_address;
 		this.v_email = v_email;
 		this.v_password = v_password;
+		this.v_status = false;
+		this.v_wallet =0;
 	}
 
 	public int getV_id() {
@@ -80,6 +84,22 @@ public class Vendor {
 
 	public void setV_password(String v_password) {
 		this.v_password = v_password;
+	}
+
+	public Boolean getV_status() {
+		return v_status;
+	}
+
+	public void setV_status(Boolean v_status) {
+		this.v_status = v_status;
+	}
+
+	public float getV_wallet() {
+		return v_wallet;
+	}
+
+	public void setV_wallet(float v_wallet) {
+		this.v_wallet = v_wallet;
 	}
 
 	@Override

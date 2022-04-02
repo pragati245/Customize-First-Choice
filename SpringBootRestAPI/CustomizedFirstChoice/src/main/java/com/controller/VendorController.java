@@ -2,20 +2,14 @@ package com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.entities.Vendor;
 import com.service.VendorService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/vendor")
 public class VendorController
@@ -32,15 +26,15 @@ public class VendorController
 	
 	}//Ok
 	
-	@GetMapping("/loginvendor")
+	@PostMapping("/loginvendor")
 	//public ResponseEntity<Vendor> loginVendor(@RequestBody Vendor vendor)
-	public boolean loginVendor(@RequestBody Vendor vendor)
+	public ResponseEntity<Vendor> loginVendor(@RequestBody Vendor vendor)
 	{
-		boolean value = vendorservice.loginVendor(vendor);
-		if(value==true)
-			return true;
-		else 
-			return false;
+		Vendor value = vendorservice.loginVendor(vendor);
+		if(value!=null)
+			return new ResponseEntity(value, HttpStatus.OK);
+		else
+			return new ResponseEntity(false, HttpStatus.FORBIDDEN);
 		//return userservice.loginUser(user);
 
 		
@@ -51,8 +45,15 @@ public class VendorController
 	{
 		return vendorservice.updateVendor(vendor);
 	}//Ok
-	
-	
+
+
+	@PatchMapping("/approve/{v_id}/{v_status}")
+	public Vendor approvevendor(@PathVariable("v_id") int v_id, @PathVariable("v_status") Boolean v_status)
+	{
+		return vendorservice.approveVendor(v_id, v_status);
+	}
+
+
 	@DeleteMapping("/deletevendor/{v_id}")
 	public Boolean deleteVendor(@PathVariable int v_id)
 	{

@@ -20,16 +20,16 @@ public class VendorService
 	}
 
 	//login
-	public boolean loginVendor(Vendor vendor) 
+	public Vendor loginVendor(Vendor vendor)
 	{
 		// TODO Auto-generated method stub
 		
 		Vendor vendor1=vendorrepo.findByEmail(vendor.getV_email(),vendor.getV_password());
 		
-		if(vendor1.getV_email().equals(vendor.getV_email())&& vendor1.getV_password().equals(vendor.getV_password()))
-			return true ;
+		if(vendor1!=null && vendor1.getV_email().equals(vendor.getV_email())&& vendor1.getV_password().equals(vendor.getV_password()))
+			return vendor1 ;
 		else
-				return false;
+				return null;
 	}
 	
 	//update
@@ -65,6 +65,15 @@ public class VendorService
 	public java.util.List<Vendor> allVendor() {
 		// TODO Auto-generated method stub
 		return vendorrepo.findAll();
+	}
+
+	public Vendor approveVendor(int v_id, Boolean v_status) {
+		Vendor vendor = vendorrepo.findById(v_id).orElse(null);
+		if(vendor!= null){
+			vendor.setV_status(v_status);
+			return vendorrepo.save(vendor);
+		}
+		return null;
 	}
 }
 
