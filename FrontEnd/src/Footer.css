@@ -1,45 +1,390 @@
-.footer{
-    height:80px;
-    display:flex;
-    align-items:center;
-    background-color:#795559;
-    position:bottom;
-    left:0;
-    bottom:0;
-    width:100%;
-    z-index:100;
-    scroll-margin-top:1;
-    margin-bottom:0px;
-    font-size:13px;
+.footer_main_div {
+    margin-top: 40px;
 }
-.footer_logo{
-    width:80px;
-    object-fit:contain;
-    margin:0 20px;
-    margin-bottom:5px;
-    display:flex;
+.footer_jumbotron {
+    padding-top: 47px;
+    padding-bottom: 100px;
+    margin-bottom: 0px;
 }
 
+.footer_heading_div{
+    margin-top: 15px;
+}
+.footer_logo_img {
+    vertical-align: middle;
+    display: inline-block;
+    width: 150px;
+    height: 82px;
+}
+.footer_heading {
+    margin-bottom: 10px;
+    color: #81848a;
+    margin-top: 20px;
+    font-family: 'Brown-Light';
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 300;
+    text-align: left;
+}
+.menu_title {
+    color: #b62059;
+    font-size: 15px;
+    font-weight: 700;
+}
+.menu_content_div {
+    margin-top: 15px;
+    cursor: pointer;
+}
+.menu_content {
+    font-family: 'Brown-Light';
+    color: #3e4a74 !important;
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+}
+.footer_first_col {
+    flex: 0 0 90%;
+    width: 80%;
+}
+.footer_first_sub_col {
+    margin-bottom: 80px;
+}
+@media screen and (min-width: 1200px) {
+    .footer_container {
+        max-width: 1280px;
+        padding-left: 25px;
+    padding-right: 25px;
+    }
+}
+@media screen and (max-width: 479px)
+{
+    .social_icon_row{
+        margin-bottom: 40px;
+    }
+}
 
-.Social{
-    margin-left: 40%;
-    margin-right: 10px;
-    font-size:13px;
-    font-weight:800;
-    display:flex;
+/* .social_icons_container:hover > .social_icon_up {
+    transform: rotate(40deg);
+} */
+
+
+.social_icons_container:hover > .social_icon_down_insta {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
 }
-.footer_helpLine{
-    
-    margin-left: 90px;
-    align-items: center;
-    font-size:13px;
-    font-weight:800;
-    display:flex;
+.social_icons_container:hover > .social_icon_up_insta {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
 }
-.footer_contact{
-    margin-left: 60px;
-    align-items: center;
-    font-size:13px;
-    font-weight:800;
-    display:flex;
+.social_icon_down_insta {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
 }
+.social_icon_up_insta {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+
+.social_icons_container:hover > .social_icon_down_pinterest {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_up_pinterest {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_down_pinterest {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_up_pinterest {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_down_facebook {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_up_facebook {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_down_facebook {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_up_facebook {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_down_linkedin {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_up_linkedin {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_down_linkedin {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_up_linkedin {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_down_twitter {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icons_container:hover > .social_icon_up_twitter {
+    -webkit-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -35px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_down_twitter {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_up_twitter {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -webkit-transition: transform 0.4s ease-in-out;
+}
+.social_icon_row {
+    margin-top: 20px;
+    margin-left: 0px;
+}
+.social_icons_container{
+    height: 35px;
+
+}
+.social_icon_insta {
+    background-image: linear-gradient(131deg, #e71e4c, #fb774e);
+    position: relative;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 3px;
+    background-color: #d0d7e4; 
+}
+.social_icon_pinterest {
+    background-color: #e60023;
+    position: relative;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+.social_icon_facebook {
+    background-color: #067aeb;
+    position: relative;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+.social_icon_linkedin {
+    background-color: #01669e;
+    position: relative;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+.social_icon_twitter {
+    background-color: #1da1f2;
+    position: relative;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+.social_icon_up_insta {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    background-image: url('assets/img/instagram-1.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+
+  .social_icon_down_insta {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    margin-top: 35px;
+    background-image: url('assets/img/instagram-1.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+.social_icon_up_pinterest {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    background-image: url('assets/img/pinterest.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+
+  .social_icon_down_pinterest {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    margin-top: 35px;
+    background-image: url('assets/img/pinterest.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+.social_icon_up_facebook {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    background-image: url('assets/img/facebook.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+
+  .social_icon_down_facebook {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    margin-top: 35px;
+    background-image: url('assets/img/facebook.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+.social_icon_up_linkedin {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    background-image: url('assets/img/linkedin.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+
+  .social_icon_down_linkedin {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    margin-top: 35px;
+    background-image: url('assets/img/linkedin.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+.social_icon_up_twitter {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    background-image: url('assets/img/twitter.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+
+  .social_icon_down_twitter {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    width: 35px;
+    height: 35px;
+    margin-top: 35px;
+    background-image: url('assets/img/twitter.svg');
+    background-position: 50% 50%;
+    background-size: 13px;
+    background-repeat: no-repeat;
+  }
+  
+
+
+  

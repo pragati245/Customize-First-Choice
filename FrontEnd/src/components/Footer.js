@@ -1,30 +1,37 @@
-import React ,{useState} from 'react';
+import React from 'react';
 import '../Footer.css';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import FooterLogo from '../assets/img/Logo.png';
+import { Link } from 'react-router-dom';
 
-function Footer() {
-   
+var style = {
+    backgroundColor: "#F8F8F8",
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    padding: "20px",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "60px",
+    width: "100%",
+}
+
+var phantom = {
+  display: 'block',
+  padding: '20px',
+  height: '60px',
+  width: '100%',
+}
+function Footer(props) {
     return (
-        
-        <div className='footer'>
-            
-            <div>
-            <span className='footer_contact'><h3>Contact us At:</h3></span>
-                <span className='footer_helpLine'>Email: sapiens@gmail.com  Telephone: 02143-226540</span>
-            </div >
-            <div className='Social'>
-                <h3>Follow us on:</h3>
-                <div className='footer_logo'> <FacebookIcon/>
-                    <InstagramIcon/>
-                    <TwitterIcon/>
-                    <WhatsAppIcon/>
-                    </div>
+        <div>
+            <div style={phantom} />
+            <div style={style}>
+                {/* {children} */}
+                @asd
             </div>
         </div>
     )
 }
 
-export default Footer
+
+export default Footer;
