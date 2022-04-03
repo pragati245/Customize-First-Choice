@@ -8,11 +8,11 @@ import reducer, {initialState} from './components/reducer';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <StateProvider initalState={initialState} reducer={reducer}>
     <App />
-    </StateProvider>
-  </React.StrictMode>,
+    </StateProvider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

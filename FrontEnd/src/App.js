@@ -39,7 +39,7 @@ function App() {
     <Router>
     <div className="App">
       <Routes>
-        <Route path="/" element={<><Header/><Home/><Footer/></>}/>
+        <Route path="/" element={<><Header/><Home/></>}/>
         <Route path="/checkout" element={<><Header/>
           <Checkout />
           <Footer/>
@@ -80,14 +80,14 @@ function App() {
           <ViewOrderbyuid />
           <Footer/></>}/>
         <Route path="/placed" element={<><MyOrderplaced /></>}/>
-        <Route path="/addmoney" element={<><AddMoney/></>}/>
-        <Route path="/wallet" element={<><Wallet/></>}/>
-        <Route path="/awallet" element={<><Awallet/></>}/>
-        <Route path="/vwallet" element={<><Vwallet/></>}/>
-        <Route path="/men" element={<><Header/>
+        <Route path="/addmoney" element={<><Header/><AddMoney/></>}/>
+        <Route path="/wallet" element={<><Header/><Wallet/></>}/>
+        <Route path="/awallet" element={<><AdminHeader /><Awallet/></>}/>
+        <Route path="/vwallet" element={<><VendorHeader /><Vwallet/></>}/>
+        <Route path="/raw" element={<><Header/>
           <MenCategory />
           <Footer/></>}/>
-        <Route path="/women" element={<><Header/>
+        <Route path="/stitched" element={<><Header/>
           <WomenCategory />
           <Footer/></>}/>
       </Routes>

@@ -4,7 +4,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import Logo from '../assets/img/Logo.png';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 class AdminLogin extends React.Component {
 
@@ -63,7 +63,7 @@ class AdminLogin extends React.Component {
                     <img className='login_img' src={Logo} alt='logo' />
                 </Link>
                 <div className='login_container'>
-                    <h1>Sign-in</h1>
+                    <h1>Admin Sign-in</h1>
                     <form>
                         {/* <h5>Admin ID</h5><input type='number' name="adminid" value={this.state.adminid}  onChange={this.handleChange}/>
                     <h5>Password</h5><input type='password' name="apassword" value={this.state.apassword}  onChange={this.handleChange}/><br/> */}
@@ -76,6 +76,9 @@ class AdminLogin extends React.Component {
                             <Form.Control type='password' name="apassword" value={this.state.apassword} onChange={this.handleChange} />
                         </Form.Group>
                         <button className='innerbutton' onClick={this.signIn}>Sign In</button><br />
+                        <Form.Group className="mb-2" controlId="formBasicEmail">
+                            <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
+                        </Form.Group>
                     </form>
                 </div>
             </div>

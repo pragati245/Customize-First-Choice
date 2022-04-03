@@ -13,15 +13,17 @@
 }
 .payment_section {
     display: flex;
+    justify-content: center;
     padding: 20px;
     margin: 0 20px;
     border-bottom: 1px solid lightgray;
 }
-.payment_title {
+/* .payment_title {
     flex: 0.2;
-}
+} */
 .payment_address, .payment_items, .payment_details {
     flex: 0.8;
+    text-align: center;
 }
   
 .payment_details > form {
@@ -44,7 +46,7 @@
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
   }
-  .payment_details>button{
+  /* .payment_details>button{
         background: #58181F;
         border-radius: 2px;
         width:20%;
@@ -55,4 +57,4 @@
         border-color:#58181F #58181F #58181F;
         color:White;
     
-  }
+  } */

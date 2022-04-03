@@ -7,6 +7,20 @@
     top:0;
     z-index:100;
 }
+.navbar_brand {
+    position: relative;
+    background: url(assets/img/Logo.png);
+    width: 170px;
+    left: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
 .aheader_homeIcon{
     padding:5px;
     height:25px!important;
@@ -17,7 +31,7 @@
     margin-top:0px;
 }
 .aheader_optionLineOne{
-  font-size:10px;
+  font-size:12px;
 }
 .aheader_optionLineTwo{
     font-size:13px;
@@ -36,7 +50,7 @@
     flex-direction:column;
     margin-left:10px;
     margin-right:10px;
-    color:white;
+    color:#6e1230;
     width: 100px;
    
 }

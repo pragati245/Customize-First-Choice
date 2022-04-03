@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HomeIcon from '@material-ui/icons/Home';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useStateValue } from './Stateprovider';
 import { Navbar, Nav, Button, Form, FormControl, Container } from "react-bootstrap";
 
@@ -65,16 +65,23 @@ function Header() {
         // </div>
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">&nbsp;</Navbar.Brand>
+                <Link to="/" className="navbar_brand"><Navbar.Brand > &nbsp;</Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
                         className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
+                        style={{ maxHeight: '100px', alignItems: 'center', color: "#6e1230" }}
                         navbarScroll
                     >
-                        <Nav.Link href="/men" style={{ color: "#6e1230" }}>Raw</Nav.Link>
-                        <Nav.Link href="/women" style={{ color: "#6e1230" }}>Stitched</Nav.Link>
+                        <NavLink to={"/"} className={window.location.pathname === "/" ? "headerLink headerLinkActive" : "headerLink"} >
+                            Home
+                        </NavLink>
+                        <NavLink to={"/raw"} className={window.location.pathname === "/raw" ? "headerLink headerLinkActive" : "headerLink"} >
+                            Raw
+                        </NavLink>
+                        <NavLink to={"/stitched"} className={window.location.pathname === "/stitched" ? "headerLink headerLinkActive" : "headerLink"}>
+                            Stitched
+                        </NavLink>
 
                     </Nav>
                     <Form className="d-flex" onSubmit={() => (setText(textInput.current.value))}>
@@ -87,26 +94,35 @@ function Header() {
                         />
                         <button className="searchBtn">Search</button>
                     </Form>
-                    <Nav.Link href={!sign && "/login"}>
-                        <div className='header_option'>
-                            <span className='header_optionLineOne'>Hello {!sign ? 'User' : sign.ufname}</span>
-                            <span className='header_optionLineTwo' onClick={signOut}>{sign ? 'Sign Out' : 'Sign In'}</span>
-                        </div></Nav.Link>
-                    <Nav.Link href={"/order"}>
-                        <div className='header_option'>
-                            <span className='header_optionLineOne'>Returns</span>
-                            <span className='header_optionLineTwo'>& Order</span>
-                        </div>
+                    <Nav.Link>
+                        <Link to={!sign && "/login"} className="headerLink">
+                            <div className='header_option'>
+                                <span className='header_optionLineOne'>Hello {!sign ? 'User' : sign.u_fname}</span>
+                                <span className='header_optionLineTwo' onClick={signOut}>{sign ? 'Sign Out' : 'Sign In'}</span>
+                            </div>
+                        </Link>
                     </Nav.Link>
-                    <Nav.Link href="/wallet">
-                        {/* <p className='header_category'>Wallet</p> */}
-                        <AccountBalanceWalletIcon fontSize="large" style={{ color: "#6e1230" }} />
+                    <Nav.Link>
+                        <Link to={"/order"} className="headerLink">
+                            <div className='header_option'>
+                                <span className='header_optionLineOne'>Returns</span>
+                                <span className='header_optionLineTwo'>& Order</span>
+                            </div>
+                        </Link>
                     </Nav.Link>
-                    <Nav.Link href="/checkout">
-                        <div className='header_optionBasket'>
-                            <ShoppingCartIcon fontSize="large" style={{ color: "#6e1230" }} />
-                            <span className='header_optionLineTwo header_basketCount' style={{ color: "#6e1230" }}>{basket?.length}</span>
-                        </div>
+                    <Nav.Link>
+                        <Link to="/wallet" >
+                            {/* <p className='header_category'>Wallet</p> */}
+                            <AccountBalanceWalletIcon fontSize="large" style={{ color: "#6e1230" }} />
+                        </Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to="/checkout" className="headerLink">
+                            <div className='header_optionBasket' >
+                                <ShoppingCartIcon fontSize="large" style={{ color: "#6e1230" }} />
+                                <span className='header_optionLineTwo header_basketCount' style={{ color: "#6e1230" }}>{basket?.length}</span>
+                            </div>
+                        </Link>
                     </Nav.Link>
                 </Navbar.Collapse>
             </Container>

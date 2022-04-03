@@ -2,55 +2,58 @@ import React from "react";
 import '../Home.css';
 import Photo2 from '../Photo2.jpg';
 import Product from './Product.js';
-
-class WomenCategory extends React.Component{
-    constructor(props)
-    {
+import { Container, Row } from 'react-bootstrap';
+import Loader from './Loader';
+import Footer from './Footer.js';
+class WomenCategory extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             sr: [],
-            searcherror:" "
+            searcherror: " ",
+            loading: false
         }
     }
-    componentDidMount =()=>{
-        fetch(process.env.REACT_APP_BASE_URL+"/women")
-        .then(resp => resp.json())
-        .then(data => 
-            {if(data.length!=0)
-                {
+    componentDidMount = () => {
+        this.setState({ loading: true })
+        fetch(process.env.REACT_APP_BASE_URL + "/product/stitched")
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.length != 0) {
                     console.log(JSON.stringify(data));
-                    this.setState({sr: data})
+                    this.setState({ sr: data, loading: false })
                 }
-                else
-                {
-                    this.setState({searcherror: "Result not found :("});
+                else {
+                    this.setState({ searcherror: "Result not found :(" });
                 }
             });
     }
 
-    render(){
-        return(
-            <div>
-            <div className='home'>
-                <div className='home_container'>    
-                {
-                        this.state.sr.map(
-                            (o) => {
-                                if(o.papprove==="true")
+    render() {
+        return (
+            this.state.loading ? <Loader /> :
+                <div>
+                    <div className='home'>
+                        <Container className='mt-3'>
+                            <Row xs={2} md={4} className="g-4 mt-2">
                                 {
-                                    return(
-                                        <div className='home_row'>
-                                         <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating}/>
-                                     </div>
-                                    );
+                                    this.state.sr.map(
+                                        (o) => {
+
+                                            return (
+                                                <div className=''>
+                                                    <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating} />
+                                                </div>
+                                            );
+                                        }
+                                    )
                                 }
-                            }
-                        )
-                } 
-                <p> {this.state.searcherror} </p>
-            </div>
-           </div>
-        </div>
+                                <p> {this.state.searcherror} </p>
+                            </Row>
+                        </Container>
+                    </div>
+                    <Footer />
+                </div>
         )
     }
 
