@@ -1,6 +1,7 @@
 package com.service;
 
 
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,41 +22,44 @@ public class UserService
 	}
 
 	//login
-	public boolean loginUser(User user) 
-	{
+	public User loginUser(User user) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		
 		User user1=userrepo.findByEmail(user.getU_email(),user.getU_password());
 		
-		if(user1.getU_email().equals(user.getU_email())&& user1.getU_password().equals(user.getU_password()))
-			return true ;
+		if(user1!=null && user1.getU_email().equals(user.getU_email())&& user1.getU_password().equals(user.getU_password()))
+			return user1 ;
 		else
-				return false;
+			return null;
 	}
-	
-//	
-//	public ResponseEntity<User> loginUser(User user) 
-//	{
-//		// TODO Auto-generated method stub
-//		User user1=userrepo.findByEmail(user.getU_email(),user.getU_password());
-//		
-//		if(user1.getU_email().equals(user.getU_email())&&user1.getU_password().equals(user.getU_password()))
-//			return new ResponseEntity<User>(user,HttpStatus.ACCEPTED);
-//		else
-//				return new ResponseEntity<>(HttpStatus.FORBIDDEN);		
-//	}	
+
+
+	//update
+	public User addWalletMoney(User user) {
+		// TODO Auto-generated method stub
+		User existinguser;
+		existinguser=userrepo.findById(user.getU_id()).orElse(null);
+		if(existinguser != null) {
+			existinguser.setWallet(user.getWallet());
+		}
+		return userrepo.save(existinguser);
+	}
+
+
 
 	//update
 	public User updateUser(User user) {
 		// TODO Auto-generated method stub
 		User existinguser;
 		existinguser=userrepo.findById(user.getU_id()).orElse(null);
-		existinguser.setU_fname(user.getU_fname());
-		existinguser.setU_lname(user.getU_lname());
-		existinguser.setU_phone(user.getU_phone());
-		existinguser.setU_email(user.getU_email());
-		existinguser.setU_password(user .getU_password());
-		existinguser.setU_address(user.getU_address());
+		if(existinguser != null) {
+			existinguser.setU_fname(user.getU_fname());
+			existinguser.setU_lname(user.getU_lname());
+			existinguser.setU_phone(user.getU_phone());
+			existinguser.setU_email(user.getU_email());
+			existinguser.setU_password(user.getU_password());
+			existinguser.setU_address(user.getU_address());
+		}
 		
 		return userrepo.save(existinguser);
 	}

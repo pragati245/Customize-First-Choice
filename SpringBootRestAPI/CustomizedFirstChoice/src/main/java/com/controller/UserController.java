@@ -2,7 +2,10 @@ package com.controller;
 
 import java.util.List;
 
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,16 +38,12 @@ public class UserController
 	
 	@PostMapping("/loginuser")
 	//public ResponseEntity<User> loginUser(@RequestBody User user)
-	public boolean loginUser(@RequestBody User user)
-	{
-		boolean value = userservice.loginUser(user);
-		if(value==true)
-			return true;
+	public ResponseEntity<User> loginUser(@RequestBody User user) throws AuthenticationException {
+		User foundUser = userservice.loginUser(user);
+		if(foundUser!=null)
+			return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		else 
-			return false;
-		//return userservice.loginUser(user);
-
-		
+			return new ResponseEntity<>(foundUser, HttpStatus.FORBIDDEN);
 	}//Ok
 	
 	@PutMapping("/updateuser")
@@ -52,8 +51,14 @@ public class UserController
 	{
 		return userservice.updateUser(user);
 	}//Ok
-	
-	
+
+	@PutMapping("/addMoney")
+	public User addMoneyToUserWallet(@RequestBody User user)
+	{
+		return userservice.addWalletMoney(user);
+	}
+
+
 	@DeleteMapping("/deleteuser/{u_id}")
 	public Boolean deleteUser(@PathVariable int u_id)
 	{

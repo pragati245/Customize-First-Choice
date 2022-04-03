@@ -1,7 +1,7 @@
 package com.service;
 
-import java.rmi.NoSuchObjectException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class ProductService {
 	ProductAuditRepository parepo;
 
 	public List<Product> getAllProducts() {
-		return prepo.findAll();
+		return prepo.findAll().stream().filter(e -> e.getPqty()>0).collect(Collectors.toList());
 	}
 	public List<Product> getproducts(int p_id)
 	{
@@ -38,11 +38,11 @@ public class ProductService {
 		return prepo.searchbykeyword(pname, pbrand, pdesc);
 		
 	}
-	public List<Product> getAllMen() {
-		return prepo.getAllMen();
+	public List<Product> getAllRaw() {
+		return prepo.getAllRaw();
 	}
-	public List<Product> getAllWomen() {
-		return prepo.getAllWomen();
+	public List<Product> getAllStitched() {
+		return prepo.getAllStitched();
 	}
 	public List<Product> getByVid(int v_id) {
 		return prepo.getByVid(v_id);
@@ -71,7 +71,7 @@ public class ProductService {
 	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
 			int pqty) throws Exception {
 		try{
-			return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty);
+			return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice*1.1f,pqty);
 		}
 		catch (Exception ex){
 			throw new Exception("Adding product failed"+ ex.getMessage());

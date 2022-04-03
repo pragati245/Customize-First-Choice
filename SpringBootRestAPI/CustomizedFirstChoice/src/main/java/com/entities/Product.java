@@ -3,15 +3,7 @@ package com.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Product {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int p_id;
 	
 	private String pname;
@@ -39,9 +31,10 @@ public class Product {
 
 	private String pbrand;
 
+	private String imageUrl;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Category cat;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -49,9 +42,14 @@ public class Product {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Vendor vdr;
 	
-	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+//	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+//	@JsonProperty(access = Access.WRITE_ONLY)
+//	private List<MyOrder> myorders = new ArrayList<MyOrder>();
+
+
+	@OneToMany(mappedBy = "product")
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private List<MyOrder> myorders = new ArrayList<MyOrder>();
+	private List<MyOrderProductMapping> orderAssoc;
 
 	public Product() {
 		super();
@@ -153,12 +151,12 @@ public class Product {
 		this.vdr = vdr;
 	}
 
-	public List<MyOrder> getMyorders() {
-		return myorders;
+	public List<MyOrderProductMapping> getOrderAssoc() {
+		return orderAssoc;
 	}
 
-	public void setMyorders(List<MyOrder> myorders) {
-		this.myorders = myorders;
+	public void setOrderAssoc(List<MyOrderProductMapping> orderAssoc) {
+		this.orderAssoc = orderAssoc;
 	}
 
 	@Override
@@ -166,6 +164,12 @@ public class Product {
 		return "Product [p_id=" + p_id + ", pname=" + pname + ", pdesc=" + pdesc + ", psize=" + psize + ", prating="
 				+ prating + ", pqty=" + pqty + ", pprice=" + pprice + ", pbrand=" + pbrand + ",cat=" + cat + ", vdr=" + vdr;
 	}
-	
-    
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 }

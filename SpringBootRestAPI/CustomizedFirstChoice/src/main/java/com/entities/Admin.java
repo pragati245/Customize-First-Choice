@@ -77,4 +77,5 @@ public class Admin
 	public void setA_wallet(float a_wallet) {
 		this.a_wallet = a_wallet;
 	}
+
 }
