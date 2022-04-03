@@ -1,5 +1,7 @@
 package com.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class MyOrderProductMapping {
     @Id
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "o_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private MyOrder order;
 
     @Column(name = "quantity")

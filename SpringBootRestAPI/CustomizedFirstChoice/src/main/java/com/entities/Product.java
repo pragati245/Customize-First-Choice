@@ -47,7 +47,7 @@ public class Product {
 
 
 	@OneToMany(mappedBy = "product")
-//	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<MyOrderProductMapping> orderAssoc;
 
 	public Product() {

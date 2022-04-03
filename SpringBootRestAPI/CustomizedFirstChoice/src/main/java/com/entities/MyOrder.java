@@ -32,6 +32,7 @@ public class MyOrder {
 //	private List<Product> products = new ArrayList<Product>();
 
 	@OneToMany(mappedBy = "order")
+//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MyOrderProductMapping> productAssoc;
 
 	public MyOrder() {

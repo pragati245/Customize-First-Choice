@@ -1,9 +1,6 @@
 package com.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import com.entities.MyOrderProductMapping;
 import com.entities.Product;
@@ -70,9 +67,23 @@ public class MyOrderService {
 		return orderEntity;
 	}
 
-	public Optional<MyOrder> findById(int oid){
-		return morepo.findById(oid);
+	public MyOrder findById(int oid){
+		MyOrder order = morepo.findById(oid).get();
+		if(order!=null){
+//			List<MyOrderProductMapping> mappings = opMappingRepo.getAllOrderProductMappingForOrder(oid);
+			List<MyOrderProductMapping> allMappings = opMappingRepo.findAll();
+			List<MyOrderProductMapping> mappings = new ArrayList<>();
+			for(MyOrderProductMapping op:allMappings){
+				if(op.getOrder().getOid() == oid){
+					mappings.add(op);
+				}
+			}
+			order.setProductAssoc(mappings);
+
+		}
+		return order;
 	}
+
 	public List<MyOrder> findAll() {
 		List<MyOrder> orders = morepo.findAll();
 		// TODO Auto-generated method stub
