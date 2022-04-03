@@ -34,7 +34,14 @@ public class UserController
 	{
 		return userservice.registerUser(user);
 	
-	}//Ok
+	}
+
+	@GetMapping("/{id}")
+	public User getUser(@PathVariable("id") int id)
+	{
+		return userservice.getUserById(id);
+
+	}
 	
 	@PostMapping("/loginuser")
 	//public ResponseEntity<User> loginUser(@RequestBody User user)
@@ -44,7 +51,7 @@ public class UserController
 			return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		else 
 			return new ResponseEntity<>(foundUser, HttpStatus.FORBIDDEN);
-	}//Ok
+	}
 	
 	@PutMapping("/updateuser")
 	public User updateUser(@RequestBody User user)
@@ -52,7 +59,7 @@ public class UserController
 		return userservice.updateUser(user);
 	}//Ok
 
-	@PutMapping("/addMoney")
+	@PostMapping("/addMoney")
 	public User addMoneyToUserWallet(@RequestBody User user)
 	{
 		return userservice.addWalletMoney(user);

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.service.FilesStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +51,12 @@ public class ProductController {
 	}
 	@GetMapping("/raw")
 	public List<Product> getAllRaw() {
-		return pservice.getAllRaw();
+		return pservice.getAllRaw().stream().filter(e -> e.getPqty()>0).collect(Collectors.toList());
 	}
 
 	@GetMapping("/stitched")
 	public List<Product> getAllStitched() {
-		return pservice.getAllStitched();
+		return pservice.getAllStitched().stream().filter(e -> e.getPqty()>0).collect(Collectors.toList());
 	}
 
 	@GetMapping("/viewbyvid")

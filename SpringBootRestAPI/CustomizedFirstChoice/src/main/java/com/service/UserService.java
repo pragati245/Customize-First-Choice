@@ -21,6 +21,12 @@ public class UserService
 			return userrepo.save(user);
 	}
 
+	public User getUserById(int id)
+	{
+		// TODO Auto-generated method stub
+		return userrepo.findById(id).get();
+	}
+
 	//login
 	public User loginUser(User user) throws AuthenticationException {
 		// TODO Auto-generated method stub
@@ -40,7 +46,8 @@ public class UserService
 		User existinguser;
 		existinguser=userrepo.findById(user.getU_id()).orElse(null);
 		if(existinguser != null) {
-			existinguser.setWallet(user.getWallet());
+			float existingWallet = existinguser.getWallet() > 0 ? existinguser.getWallet() : 0;
+			existinguser.setWallet(existingWallet + user.getWallet());
 		}
 		return userrepo.save(existinguser);
 	}
