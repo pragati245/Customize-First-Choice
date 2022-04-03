@@ -74,7 +74,7 @@ function Product({ id, title, describe, size, brand, price, image, rating ,c_typ
                         <strong>₹{price}</strong>
                     </Card.Text>
                     <Card.Text>
-                        Totoal Stocks in inventory - 
+                        Total Stocks in inventory :
                         <strong>{p_qty}</strong>
                     </Card.Text>
                     <Card.Text className='product_rating'>
