@@ -10,10 +10,22 @@ export default class ViewOrderbyuid extends React.Component {
         super(props);
         this.state = {
             sign: JSON.parse(localStorage.getItem('data1')),
+            walletBalance: null
         }
     }
     submitForm = () => {
         window.location.href = "/";
+    }
+    componentDidMount = async () => {
+
+        await fetch(process.env.REACT_APP_BASE_URL + "/user/" + this.state.sign.u_id)
+            .then(resp => resp.json())
+            .then(data => {
+                let sign = JSON.parse(localStorage.getItem('data1'))
+                sign.wallet = data.wallet
+                localStorage.setItem('data1', JSON.stringify(sign));
+                this.setState({ walletBalance: data.wallet })
+            });
     }
     render() {
         const to1 = this.state.sign;
@@ -21,7 +33,7 @@ export default class ViewOrderbyuid extends React.Component {
             <Container className='login'>
                 <div style={{ textAlign: "center" }}>
                     <Link to="/" >
-                    <img className='login_img' src={Logo} alt='logo'/>
+                        <img className='login_img' src={Logo} alt='logo' />
                     </Link>
                 </div>
                 {to1 != null
@@ -30,7 +42,7 @@ export default class ViewOrderbyuid extends React.Component {
                         <div className='register_container'>
                             <h2>User Wallet</h2><br />
                             <form >
-                                <h5>Amount in wallet : {this.state.sign.wallet}</h5><br />
+                                <h5>Amount in wallet : {this.state.walletBalance}</h5><br />
                                 <Link to="/addmoney"><button className='innerbutton' type="submit" value="Submit"/* onClick={this.submitForm}*/>Add Amount</button></Link><br />
                             </form>
                         </div>

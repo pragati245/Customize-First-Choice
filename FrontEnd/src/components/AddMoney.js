@@ -19,16 +19,29 @@ export default class AddMoney extends React.Component {
         console.log(this.state.cname);
 
     }
-    submitForm = (e) => {
-        const url = process.env.REACT_APP_BASE_URL + "/addmoneytowallet?uid=" + this.state.sign.u_id + "&amount=" + this.state.cname;
-        fetch(url)
+    submitForm =async (e) => {
+        const reqData = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                u_id: this.state.sign.u_id,
+                wallet: Number(this.state.cname),
+            })
+        };
+        const url = process.env.REACT_APP_BASE_URL + "/user/addMoney";
+
+        await fetch(url, reqData)
             .then(response => response.json())
             .then(data => {
-
-                console.log(data);
-            });
-        window.location.href = "/";
-
+                let sign=  JSON.parse(localStorage.getItem('data1'))
+                sign.wallet=data.wallet
+                localStorage.setItem('data1', JSON.stringify(sign));
+                window.location.href = "/wallet";
+            }).catch((error) => {
+                console.log(error);
+            })
     }
     render() {
         return (
