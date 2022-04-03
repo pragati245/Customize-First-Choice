@@ -58,7 +58,7 @@ function AdminHeader() {
 
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Link to="/" className="navbar_brand"><Navbar.Brand > &nbsp;</Navbar.Brand></Link>
+        <Link to="/viewproducts" className="navbar_brand"><Navbar.Brand > &nbsp;</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

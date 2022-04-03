@@ -27,7 +27,7 @@ function Footer(props) {
             <div style={phantom} />
             <div style={style}>
                 {/* {children} */}
-                @2002 Sapiens<br></br>
+                @2022 First Choice<br></br>
                 {/* CONTACT US:<br></br>
                 123, Ahuja Naagar,Delhi,2333,<br></br>
                 +916767676766 */}

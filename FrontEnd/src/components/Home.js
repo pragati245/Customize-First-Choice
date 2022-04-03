@@ -48,6 +48,7 @@ export default class Home extends React.Component {
                                                         c_type={o.cat.c_type}
                                                         c_name={o.cat.c_name}
                                                         p_qty={o.pqty}
+                                                        imageUrl={o.imageUrl}
                                                     />
                                                 </div>
                                             );

@@ -34,7 +34,7 @@ export default class ViewOrderbyuid extends React.Component {
                         <div className='vhome_container'>
                             <div className='vhome_row'>
                                 <table><tr><th>Order TotalPrice</th><th>Order QTY</th><th>Order Status</th></tr>
-                                    {this.state.to.map((o) => {
+                                    {this.state.to.reverse().map((o) => {
                                         return (
                                             <tr>
                                                 <td>{o.totalprice}</td>

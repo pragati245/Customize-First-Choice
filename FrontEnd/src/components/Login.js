@@ -4,10 +4,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import Logo from '../assets/img/Logo.png';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginIn() {
-    const history=useNavigate();
+    const history = useNavigate();
     const [inputs, setInputs] = useState({
         email: '',
         password: ''
@@ -72,18 +72,21 @@ function LoginIn() {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter password" name="password" value={password} onChange={handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="By signing in you will agree all the terms & condition by FIRST CHOICE" />
                     </Form.Group>
                     <button className='innerbutton' type="submit" onClick={(e) => signIn(e)}>Sign In</button><br />
                     {isError &&
-                        <Form.Text style={{color: 'red'}}>
+                        <Form.Text style={{ color: 'red' }}>
                             Incorrect Email and Password
                         </Form.Text>
                     }
                 </form><br />
                 <Link to="/forgetpass"><p /*onClick={()=> window.location.href = '/forgetpass'}*/ style={{ textAlign: 'center' }}>Forget Password</p></Link>
-                <p>By signing in you will agree all the terms & condition by SAPIENS</p>
+
                 <Link to="/register" ><button className='innerbutton'> Create Account</button></Link>
                 <Link to="/vendorlogin" ><button className='innerbutton mt-3'> Vendor Login</button></Link>
                 <Link to="/adminlogin" ><button className='innerbutton mt-3'> Admin Login</button></Link>
