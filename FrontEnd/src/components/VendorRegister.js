@@ -173,10 +173,11 @@ export default class VendorRegister extends React.Component{
     await fetch(process.env.REACT_APP_BASE_URL+"/vendor/addvendor",reqData)
     .then(resp => resp.json())
     .then(data => this.setState({st: data, success: true}));
-    // window.location.href="/vendorlogin";
+    window.location.href="/vendorlogin";
        
     }
     render(){
+
     return (
         <div className='register'>
              <Link to="/">
@@ -184,7 +185,7 @@ export default class VendorRegister extends React.Component{
             <img className='login_img' src={Logo} alt='logo' />
             </Link>
             <div className='register_container'>
-                <h1>Sign-up</h1>
+                <h1>Vendor Sign-up</h1>
                 {/* <form >
                     <h5>First Name</h5><input type='text' name="fname" value={this.state.fname} onChange={this.handleChange}/><br/>
                     <h5>Email</h5><input type='text' name="email" value={this.state.email} onChange={this.handleChange}/><br/>

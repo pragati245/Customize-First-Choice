@@ -63,7 +63,7 @@ class AdminLogin extends React.Component {
                     <img className='login_img' src={Logo} alt='logo' />
                 </Link>
                 <div className='login_container'>
-                    <h1>Sign-in</h1>
+                    <h1>Admin Sign-in</h1>
                     <form>
                         {/* <h5>Admin ID</h5><input type='number' name="adminid" value={this.state.adminid}  onChange={this.handleChange}/>
                     <h5>Password</h5><input type='password' name="apassword" value={this.state.apassword}  onChange={this.handleChange}/><br/> */}

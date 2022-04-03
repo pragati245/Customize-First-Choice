@@ -114,7 +114,7 @@ export default class Register extends React.Component {
         this.setState({ error, [nm]: val })
 
     }
-    submitForm = (e) => {
+    submitForm = async (e) => {
         e.preventDefault();
         //console.log(this.state);
         const reqData = {
@@ -123,16 +123,16 @@ export default class Register extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ufname: this.state.fname,
-                ulname: this.state.lname,
-                ucontactno: this.state.contactno,
-                uaddress: this.state.address,
-                uemail: this.state.email,
-                upassword: this.state.password,
+                u_fname: this.state.fname,
+                u_lname: this.state.lname,
+                u_phone: this.state.contactno,
+                u_address: this.state.address,
+                u_email: this.state.email,
+                u_password: this.state.password,
             })
         };
 
-        fetch(process.env.REACT_APP_BASE_URL+"/registercustomer", reqData)
+        await fetch(process.env.REACT_APP_BASE_URL+"/user/adduser", reqData)
             .then(resp => resp.json())
             .then(data => this.setState({ st: data, success: true }));
         window.location.href = "/login";
@@ -146,7 +146,7 @@ export default class Register extends React.Component {
                     <img className='login_img' src={Logo} alt='logo'/>
                 </Link>
                 <div className='register_container'>
-                    <h1>Sign-up</h1>
+                    <h1>User Sign-up</h1>
                     {/* <form>
                     <h5>First Name</h5><input type='text' name="fname" value={this.state.fname} onChange={this.handleChange}/><br/>
                     <h5>Last Name</h5><input type='text' name="lname" value={this.state.lname} onChange={this.handleChange}/><br/>
@@ -168,7 +168,7 @@ export default class Register extends React.Component {
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <Form.Control type="email" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Address</Form.Label>
@@ -176,15 +176,15 @@ export default class Register extends React.Component {
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Contact Number</Form.Label>
-                        <Form.Control type="text" placeholder="Enter ontact Number" name="contactno" value={this.state.contactno} onChange={this.handleChange} />
+                        <Form.Control type="number" placeholder="Enter ontact Number" name="contactno" value={this.state.contactno} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <Form.Control type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Retype-Password</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Retype-Password" name="repassword" value={this.state.repassword} onChange={this.handleChange} />
+                        <Form.Control type="password" placeholder="Enter Retype-Password" name="repassword" value={this.state.repassword} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Link to="register" ><button className='innerbutton' type="submit" onClick={this.submitForm}>Sign Up</button></Link><br />

@@ -2,11 +2,13 @@ import React from 'react';
 import '../Product.css';
 import { useStateValue } from './Stateprovider';
 import { Row, Card, Col } from "react-bootstrap";
+import  {Link} from 'react-router-dom';
 
-function Product({ id, title, describe, size, brand, price, image, rating }) {
+function Product({ id, title, describe, size, brand, price, image, rating ,c_type,c_name,p_qty}) {
     const [{ basket }, dispatch] = useStateValue();
-    //console.log("this is basket" ,basket);
+    console.log("this is basket", basket);
     //let x=10;
+
     const addToBasket = () => {
         //dispatch item in data layer
         dispatch({
@@ -20,8 +22,19 @@ function Product({ id, title, describe, size, brand, price, image, rating }) {
                 pimage: image,
                 pprice: price,
                 prating: rating,
+                p_qty: p_qty,
+                quantity: 1
             },
         });
+    };
+    const checkProductInCart = () => {
+        let c = basket.filter(b => b.pid === id)
+        if (c.length > 0) {
+            return true
+        }
+        else {
+            return false
+        }
     };
     return (
         // <div className='product'>
@@ -42,35 +55,38 @@ function Product({ id, title, describe, size, brand, price, image, rating }) {
         //     </div>
         //     <button onClick={addToBasket}>Add to Basket</button>
         // </div>
-        <Row xs={2} md={4} className="g-4 mt-2">
-            {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
-                    <Card style={{padding:"20px",boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;"}}>
-                        <Card.Img variant="top" src={image} style={{borderRadius:"4px",boxShadow: "rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px"}}/>
-                        <Card.Body>
-                            <Card.Title>{title}</Card.Title>
-                            <Card.Text style={{marginBottom:"0px"}}>
-                                {describe}
-                            </Card.Text>
-                            <Card.Text style={{marginBottom:"0px"}}>
-                                Size - {size}
-                            </Card.Text>
-                            <Card.Text style={{marginBottom:"0px"}}>
-                                Brand - {brand}
-                            </Card.Text>
-                            <Card.Text>
-                                {/* <small>Rs </small> */}
-                                <strong>₹{price}</strong>
-                            </Card.Text>
-                            <Card.Text className='product_rating'>
-                                {Array(rating).fill().map((_, i) => (<p>⭐</p>))}
-                            </Card.Text>
-                            <button onClick={addToBasket} className="addToCartBtn">+ Add to Basket</button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            ))}
-        </Row>
+        <Col>
+            <Card style={{ padding: "20px", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px" }}>
+                <Card.Img variant="top" src={image} style={{ borderRadius: "4px", boxShadow: "rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px" }} />
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text style={{ marginBottom: "0px" }}>
+                        {describe}
+                    </Card.Text>
+                    <Card.Text style={{ marginBottom: "0px" }}>
+                        Size - {size}
+                    </Card.Text>
+                    <Card.Text style={{ marginBottom: "0px" }}>
+                        Brand - {brand}
+                    </Card.Text>
+                    <Card.Text>
+                        {/* <small>Rs </small> */}
+                        <strong>₹{price}</strong>
+                    </Card.Text>
+                    <Card.Text>
+                        Totoal Stocks in inventory - 
+                        <strong>{p_qty}</strong>
+                    </Card.Text>
+                    <Card.Text className='product_rating'>
+                        {Array(rating).fill().map((_, i) => (<p key={i}>⭐</p>))}
+                    </Card.Text>
+                    {checkProductInCart() ?
+                        <Link to="/checkout"><button className="addToCartBtn"> Go to cart</button></Link> :
+                        <button onClick={addToBasket} className="addToCartBtn">+ Add to Basket</button> 
+                    }
+                </Card.Body>
+            </Card>
+        </Col>
     )
 }
 

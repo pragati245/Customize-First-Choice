@@ -14,16 +14,19 @@ function Checkout() {
             <div className='checkout_left'>
                 {/* <img className='checkout_ad' src={baner} alter="baner"/> */}
                 <div>
-                    <h3> Hello {!sign ?'User':sign.ufname}</h3>
+                    <h3 style={{textAlign: 'center'}}> Hello {!sign ?'User':sign.ufname}</h3>
                     <h4 className='checkout_title'>Your Shopping Basket</h4>
                     {/*CheckOutProduct*/}
                     {basket.map(item=>(
                         <CheckoutProduct
-                        id={item.id}
+                        id={item.pid}
                         title={item.pname}
                         image={item.pimage}
                         price={item.pprice}
-                        rating={item.prating}/>
+                        rating={item.prating}
+                        quantity={item.quantity}
+                        p_qty={item.p_qty}
+                        />
                     ))}
                 </div>
             </div>

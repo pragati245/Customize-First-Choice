@@ -95,7 +95,7 @@ class VendorLogin extends React.Component {
                     <img className='login_img' src={Logo} alt='logo' />
                 </Link>
                 <div className='login_container'>
-                    <h1>Sign-in</h1>
+                    <h1>Vendor Sign-in</h1>
                     {/* <form>
                         <h5>Email</h5><input type='text' name="vemail" value={this.state.vemail} onChange={this.handleChange} />
                         <h5>Password</h5><input type='password' name="vpassword" value={this.state.vpassword} onChange={this.handleChange} /><br />

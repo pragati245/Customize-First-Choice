@@ -9,7 +9,16 @@ export default function Subtotal() {
     const history=useNavigate();
 
     const [{basket}]=useStateValue();
-    
+    const clickOnCheckout=()=>{
+        let sign = JSON.parse(localStorage.getItem('data1'));
+        console.log(sign);
+        if(sign ===null){
+            history('/login')
+        }
+        else{
+            history('/payment')
+        }
+    }
     return (
         <div className='subtotal'>
            <CurrencyFormat
@@ -27,7 +36,8 @@ export default function Subtotal() {
             thousandSeparator={true}
             prefix={"Rs "}
             />
-            <button onClick={e=>history.push('/payment')}>Proceed to Checkout</button>
+            {/* <button onClick={e=>history('/payment')} className="addToCartBtn">Proceed to Checkout</button> */}
+            <button onClick={clickOnCheckout} className="addToCartBtn">Proceed to Checkout</button>
         </div>
     )
 }

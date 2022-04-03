@@ -17,7 +17,7 @@
     margin-top:0px;
 }
 .vheader_optionLineOne{
-  font-size:10px;
+  font-size:12px;
 }
 .vheader_optionLineTwo{
     font-size:13px;
@@ -36,7 +36,7 @@
     flex-direction:column;
     margin-left:10px;
     margin-right:10px;
-    color:white;
+    color:#6e1230;
 }
 .vheader_category{
     display:flex;
