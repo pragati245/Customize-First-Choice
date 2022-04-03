@@ -5,10 +5,13 @@ import java.util.List;
 import com.entities.MyOrderProductMapping;
 import com.models.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.entities.MyOrder;
 import com.service.MyOrderService;
 
+@CrossOrigin("*")
 @RestController
 public class MyOrderController {
 	
@@ -16,8 +19,14 @@ public class MyOrderController {
 	MyOrderService moservice;
 	
 	@PostMapping("/saveMyOrder")
-	public MyOrder addMyOrder(@RequestBody Order mo) {
-		return moservice.addMyOrder(mo); 
+	public ResponseEntity addMyOrder(@RequestBody Order mo) {
+		try{
+			MyOrder order = moservice.addMyOrder(mo);
+			return new ResponseEntity(order, HttpStatus.OK);
+		}
+		catch (Exception e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
 	
 	@GetMapping("/getMyOrder/{o_id}")

@@ -2,18 +2,12 @@ package com.service;
 
 import java.util.*;
 
-import com.entities.MyOrderProductMapping;
-import com.entities.Product;
-import com.entities.User;
+import com.entities.*;
 import com.models.Order;
 import com.models.OrderQuantity;
-import com.repository.MyOrderProductMappingRepository;
-import com.repository.ProductRepository;
-import com.repository.UserRepository;
+import com.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.entities.MyOrder;
-import com.repository.MyOrderRepository;
 
 @Service
 public class MyOrderService {
@@ -25,6 +19,12 @@ public class MyOrderService {
 
 	@Autowired
 	ProductRepository productRepo;
+
+	@Autowired
+	VendorRepository vendorRepo;
+
+	@Autowired
+	AdminRepository adminRepo;
 
 	@Autowired
 	MyOrderProductMappingRepository opMappingRepo;
@@ -50,17 +50,23 @@ public class MyOrderService {
 		}
 		return ordersForUser;
 	}
-	public MyOrder addMyOrder(Order mo) {
+	public MyOrder addMyOrder(Order mo) throws Exception {
 		float price = mo.getTotalprice();
 		MyOrder orderEntity = new MyOrder();
 		orderEntity.setAddress(mo.getAddress());
 		orderEntity.setContactno(mo.getO_phone());
 		orderEntity.setOstatus(mo.getOstatus());
 		orderEntity.setTotalprice(mo.getTotalprice());
+		orderEntity.setTotalprice(price);
 
 		User user = userRepo.getById(mo.getU_id());
-		/*Logic of calculating wallet balance of user*/
 		orderEntity.setUser(user);
+
+		/*Logic of calculating wallet balance of user*/
+		if(!calculateWalletBalances(orderEntity)){
+			throw new Exception("Not enough money in the wallet");
+		}
+
 		orderRepo.save(orderEntity);
 
 		List<Product> allProducts = productRepo.findAll();
@@ -69,16 +75,64 @@ public class MyOrderService {
 			productMap.put(product.getP_id(), product);
 		}
 
+		List<Vendor> allVendors = this.vendorRepo.findAll();
+		Map<Integer, Vendor> vendorMap = new HashMap();
+		for(Vendor vendor : allVendors){
+			vendorMap.put(vendor.getV_id(), vendor);
+		}
+
 		for (OrderQuantity oq : mo.getProductsQuantity()){
 			MyOrderProductMapping myOrderProductMapping = new MyOrderProductMapping();
 			Product foundProduct = productMap.get(oq.getProduct_id());
 			myOrderProductMapping.setProduct(foundProduct);
 			myOrderProductMapping.setQuantity(oq.getQuantity());
+
+			/*Calculate Vendor wallet balance and quanity*/
+			calculateWalletForVendor(myOrderProductMapping, vendorMap);
+			boolean isQntySuffice = calculateAvailableProductQuantity(myOrderProductMapping);
+			if(!isQntySuffice){
+				throw new Exception("Quantity not suffice.");
+			}
+
 			myOrderProductMapping.setOrder(orderEntity);
 			opMappingRepo.save(myOrderProductMapping);
 			orderEntity.addProductAssoc(myOrderProductMapping);
 		}
+		Admin admin = adminRepo.findById(1).get();
+		float updatedAdminWallet = admin.getA_wallet() + (price*0.1f);
+		admin.setA_wallet(updatedAdminWallet);
+		adminRepo.save(admin);
+		System.out.println(updatedAdminWallet);
 		return orderEntity;
+	}
+
+	private boolean calculateWalletBalances(MyOrder orderEntity){
+		User user = orderEntity.getUser();
+		float remainingUserBalance = user.getWallet() - orderEntity.getTotalprice();
+		if(remainingUserBalance < 0){
+			return false;
+		}
+		user.setWallet(remainingUserBalance);
+		this.userRepo.save(user);
+		return true;
+	}
+
+	private void calculateWalletForVendor(MyOrderProductMapping mapping, Map<Integer, Vendor> vendors){
+		float totalPriceForProduct = mapping.getProduct().getPprice() * mapping.getQuantity();
+		Vendor requiredVendor = vendors.get(mapping.getProduct().getVdr().getV_id());
+		float updatedVendorWallet = requiredVendor.getV_wallet() + totalPriceForProduct*0.9f;
+		requiredVendor.setV_wallet(updatedVendorWallet);
+	}
+
+	private boolean calculateAvailableProductQuantity(MyOrderProductMapping mapping){
+		Product product = mapping.getProduct();
+		int updatedProductQuantity = product.getPqty() - mapping.getQuantity();
+		if(updatedProductQuantity < 0){
+			return false;
+		}
+		product.setPqty(updatedProductQuantity);
+		productRepo.save(product);
+		return true;
 	}
 
 	public MyOrder findById(int oid){

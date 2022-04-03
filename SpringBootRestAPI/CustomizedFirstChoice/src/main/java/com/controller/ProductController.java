@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.util.List;
+
+import com.service.FilesStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.entities.Product;
 import com.entities.ProductAudit;
 import com.service.ProductService;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 @CrossOrigin("*")
 @RequestMapping("/product")
@@ -19,19 +23,19 @@ import com.service.ProductService;
 public class ProductController {
 	@Autowired
 	ProductService pservice;
+
+	@Autowired
+	FilesStorageService storageService;
 	
 	@GetMapping("/getallproducts")
 	public List<Product> getAllProducts() {
 		return pservice.getAllProducts();
 	}
 
-	@GetMapping("/getallproductaudit")
-	public List<ProductAudit> getAllProductAudit() {
-		return pservice.getAllProductAudit();
-	}
-
 	@PostMapping("/addproduct")
-	public Product save(@RequestBody Product p) {
+	public Product save(@RequestBody Product p, @RequestParam("file") MultipartFile file) {
+		String url = MvcUriComponentsBuilder
+				.fromMethodName(FilesController.class, "getFile", file.getOriginalFilename()).build().toString();
 		return pservice.save(p);
 	}
 

@@ -31,6 +31,8 @@ public class Product {
 
 	private String pbrand;
 
+	private String imageUrl;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
 	private Category cat;
@@ -149,15 +151,6 @@ public class Product {
 		this.vdr = vdr;
 	}
 
-//	public List<MyOrder> getMyorders() {
-//		return myorders;
-//	}
-//
-//	public void setMyorders(List<MyOrder> myorders) {
-//		this.myorders = myorders;
-//	}
-
-
 	public List<MyOrderProductMapping> getOrderAssoc() {
 		return orderAssoc;
 	}
@@ -171,6 +164,12 @@ public class Product {
 		return "Product [p_id=" + p_id + ", pname=" + pname + ", pdesc=" + pdesc + ", psize=" + psize + ", prating="
 				+ prating + ", pqty=" + pqty + ", pprice=" + pprice + ", pbrand=" + pbrand + ",cat=" + cat + ", vdr=" + vdr;
 	}
-	
-    
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 }

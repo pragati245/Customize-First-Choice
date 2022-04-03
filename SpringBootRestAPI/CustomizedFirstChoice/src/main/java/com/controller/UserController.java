@@ -51,8 +51,14 @@ public class UserController
 	{
 		return userservice.updateUser(user);
 	}//Ok
-	
-	
+
+	@PutMapping("/addMoney")
+	public User addMoneyToUserWallet(@RequestBody User user)
+	{
+		return userservice.addWalletMoney(user);
+	}
+
+
 	@DeleteMapping("/deleteuser/{u_id}")
 	public Boolean deleteUser(@PathVariable int u_id)
 	{

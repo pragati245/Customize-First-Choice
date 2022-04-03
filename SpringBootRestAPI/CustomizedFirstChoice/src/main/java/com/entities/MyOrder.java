@@ -1,5 +1,6 @@
 package com.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class MyOrder {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "u_id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private User user;
 
 	@OneToMany(mappedBy = "order")
