@@ -33,8 +33,22 @@ public class MyOrderService {
 	MyOrderRepository orderRepo;
 
 	public List<MyOrder> getOrderDataFromUid(int uid) {
-		// TODO Auto-generated method stub
-		return morepo.getOrderDataFromUid(uid);
+		List<MyOrder> orders = morepo.findAll();
+		List<MyOrder> ordersForUser = new ArrayList<>();
+		for(MyOrder order: orders) {
+			if (order != null && order.getUser().getU_id()==uid) {
+				ordersForUser.add(order);
+				List<MyOrderProductMapping> allMappings = opMappingRepo.findAll();
+				List<MyOrderProductMapping> mappings = new ArrayList<>();
+				for (MyOrderProductMapping op : allMappings) {
+					if (op.getOrder().getOid() == order.getOid()) {
+						mappings.add(op);
+					}
+				}
+				order.setProductAssoc(mappings);
+			}
+		}
+		return ordersForUser;
 	}
 	public MyOrder addMyOrder(Order mo) {
 		float price = mo.getTotalprice();
@@ -70,7 +84,6 @@ public class MyOrderService {
 	public MyOrder findById(int oid){
 		MyOrder order = morepo.findById(oid).get();
 		if(order!=null){
-//			List<MyOrderProductMapping> mappings = opMappingRepo.getAllOrderProductMappingForOrder(oid);
 			List<MyOrderProductMapping> allMappings = opMappingRepo.findAll();
 			List<MyOrderProductMapping> mappings = new ArrayList<>();
 			for(MyOrderProductMapping op:allMappings){
@@ -82,6 +95,23 @@ public class MyOrderService {
 
 		}
 		return order;
+	}
+
+	public List<MyOrder> getAllOrders(){
+		List<MyOrder> orders = morepo.findAll();
+		for(MyOrder order: orders) {
+			if (order != null) {
+				List<MyOrderProductMapping> allMappings = opMappingRepo.findAll();
+				List<MyOrderProductMapping> mappings = new ArrayList<>();
+				for (MyOrderProductMapping op : allMappings) {
+					if (op.getOrder().getOid() == order.getOid()) {
+						mappings.add(op);
+					}
+				}
+				order.setProductAssoc(mappings);
+			}
+		}
+		return orders;
 	}
 
 	public List<MyOrder> findAll() {

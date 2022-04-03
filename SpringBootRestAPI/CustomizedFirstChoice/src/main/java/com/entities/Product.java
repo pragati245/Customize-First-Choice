@@ -33,7 +33,6 @@ public class Product {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Category cat;
 
 	@ManyToOne(cascade = CascadeType.ALL)

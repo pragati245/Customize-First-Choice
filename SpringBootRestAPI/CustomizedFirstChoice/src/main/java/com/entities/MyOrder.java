@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "myorder")
 public class MyOrder {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int o_id;
 
 	private String uname;
@@ -24,15 +24,8 @@ public class MyOrder {
 	@JoinColumn(name = "u_id")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private User user;
-	
-//	@ManyToMany(cascade = CascadeType.MERGE)
-//	@JoinTable(name = "MYORDER_PRODUCT",
-//	joinColumns = { @JoinColumn(name = "oid") },
-//	inverseJoinColumns = { @JoinColumn(name = "pid") })
-//	private List<Product> products = new ArrayList<Product>();
 
 	@OneToMany(mappedBy = "order")
-//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MyOrderProductMapping> productAssoc;
 
 	public MyOrder() {
