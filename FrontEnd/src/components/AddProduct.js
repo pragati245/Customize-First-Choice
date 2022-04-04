@@ -164,33 +164,36 @@ export default class AddProduct extends React.Component {
           console.log(res)
           this.setState({ p_image: res.data })
         })
-        .catch((err) => {})
+        .catch((err) => { })
     }
   }
-
+  checkCType = () => {
+    let a = this.state.cat.filter(cat => Number(cat.c_id) === Number(this.state.selectedOption))[0]
+    return (a!==undefined && a.c_type === 'RAW') ? true : false
+  }
   submitForm = async (e) => {
     e.preventDefault()
     let sign = JSON.parse(localStorage.getItem('data1'))
     await fetch(
       process.env.REACT_APP_BASE_URL +
-        '/product/vaddproduct?c_id=' +
-        this.state.selectedOption +
-        '&v_id=' +
-        sign.v_id +
-        '&pname=' +
-        this.state.title +
-        '&pdesc=' +
-        this.state.describe +
-        '&psize=' +
-        this.state.size +
-        '&pbrand=' +
-        this.state.brand +
-        '&pprice=' +
-        this.state.price +
-        '&pqty=' +
-        this.state.qty +
-        '&image_url=' +
-        this.state.p_image,
+      '/product/vaddproduct?c_id=' +
+      this.state.selectedOption +
+      '&v_id=' +
+      sign.v_id +
+      '&pname=' +
+      this.state.title +
+      '&pdesc=' +
+      this.state.describe +
+      '&psize=' +
+      this.state.size +
+      '&pbrand=' +
+      this.state.brand +
+      '&pprice=' +
+      this.state.price +
+      '&pqty=' +
+      this.state.qty +
+      '&image_url=' +
+      this.state.p_image,
     )
       .then((resp) => resp.json())
       .then((data) => this.setState({ st: data, success: true }))
@@ -284,16 +287,18 @@ export default class AddProduct extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2" controlId="formBasicEmail">
-            <Form.Label> Size</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Size"
-              name="size"
-              value={this.state.size}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
+          {!this.checkCType() &&
+            <Form.Group className="mb-2" controlId="formBasicEmail">
+              <Form.Label> Size</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Size"
+                name="size"
+                value={this.state.size}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+          }
           <Form.Group className="mb-2" controlId="formBasicEmail">
             <Form.Label> Brand</Form.Label>
             <Form.Control
@@ -313,6 +318,7 @@ export default class AddProduct extends React.Component {
               value={this.state.qty}
               onChange={this.handleChange}
             />
+            <div style={{color:"red"}}>{this.checkCType() && "*Above quaintity should be in meters"}</div>
           </Form.Group>
           <Form.Group className="mb-2" controlId="formBasicEmail">
             <Form.Label> Price</Form.Label>

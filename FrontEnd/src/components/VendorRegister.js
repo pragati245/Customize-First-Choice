@@ -213,11 +213,11 @@ export default class VendorRegister extends React.Component{
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <Form.Control type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>Retype-Password</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Retype-Password" name="repassword" value={this.state.repassword} onChange={this.handleChange} />
+                        <Form.Control type="password" placeholder="Enter Retype-Password" name="repassword" value={this.state.repassword} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Link to="/register" ><button className='innerbutton' type="submit" onClick={this.submitForm}>Sign Up</button></Link><br />

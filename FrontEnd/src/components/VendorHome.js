@@ -57,7 +57,7 @@ export default class VendorHome extends React.Component {
                             }
                         </table> */}
 
-                            <Table striped bordered hover>
+                            <Table striped bordered hover  style={{textAlign: 'center'}}>
                                 <thead>
                                     <tr style={{ backgroundColor: "#6e1230", color: "white" }}>
                                         <th>Product ID</th>

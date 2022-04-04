@@ -6,6 +6,8 @@ import Product from './Product.js'
 import { Container, Row } from 'react-bootstrap'
 import Loader from './Loader'
 import Footer from './Footer.js'
+import Slider from './Slider';
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -21,13 +23,13 @@ export default class Home extends React.Component {
       .then((resp) => resp.json())
       .then((data) => this.setState({ to: data, loading: false }))
 
-    //alert(this.state.to);
   }
   render() {
     return this.state.loading ? (
       <Loader />
     ) : (
       <div>
+        <Slider/>
         <div className="home">
           <Container className="mt-3">
             <Row xs={2} md={4} className="g-4 mt-2">

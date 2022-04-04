@@ -26,8 +26,11 @@ export default class ViewOrders extends React.Component{
            ? <div className='vhome'>
                 <div className='vhome_container'>
                          <div className='vhome_row'>
-                                <table><tr><th>Order ID</th><th>User ID</th><th>User Name</th><th>User Address</th><th>User ContactNumber</th><th>Order TotalPrice</th><th>Order QTY</th><th>Order Status</th></tr>
-                                     { this.state.to.map((o) => {return(<tr><td>{o.oid}</td><td>{o.uid}</td><td>{o.uname}</td><td>{o.address}</td><td>{o.contactno}</td><td>{o.totalprice}</td><td>{o.qty}</td><td>{o.ostatus}</td></tr>);})}
+                                <table  style={{textAlign: 'center'}}><tr><th>Order ID</th><th>User ID</th><th>User Name</th><th>User Address</th><th>User ContactNumber</th><th>Order TotalPrice</th><th>Order QTY</th><th>Order Status</th></tr>
+                                     { this.state.to.map((o) => {return(<tr><td>{o.oid}</td><td>{o.user.u_id}</td><td>{o.user.u_fname} {o.user.u_lname}</td><td>{o.address}</td><td>{o.contactno}</td><td>{o.totalprice}</td><td><td>{o.productAssoc.map(product => (
+                                                    <div>{product.product.pname} * {product.quantity}</div>
+                                                ))
+                                                }</td></td><td>{o.ostatus}</td></tr>);})}
                             </table>
                         </div>
                     <div className='vhome_row'>Total Number Of Orders:<br/>{this.state.to.length}</div>
