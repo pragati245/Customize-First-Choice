@@ -4,7 +4,7 @@ import { useStateValue } from './Stateprovider';
 import { Row, Card, Col } from "react-bootstrap";
 import  {Link} from 'react-router-dom';
 
-function Product({ id, title, describe, size, brand, price, image, rating ,c_type,c_name,p_qty}) {
+function Product({ id, title, describe, size, brand, price, image, rating ,c_type,c_name,p_qty,imageUrl}) {
     const [{ basket }, dispatch] = useStateValue();
     console.log("this is basket", basket);
     //let x=10;
@@ -23,7 +23,8 @@ function Product({ id, title, describe, size, brand, price, image, rating ,c_typ
                 pprice: price,
                 prating: rating,
                 p_qty: p_qty,
-                quantity: 1
+                quantity: 1,
+                imageUrl:imageUrl
             },
         });
     };
