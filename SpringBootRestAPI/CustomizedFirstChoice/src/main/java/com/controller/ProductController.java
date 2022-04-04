@@ -74,8 +74,8 @@ public class ProductController {
 	public int vaddproduct(@RequestParam("c_id")int c_id, @RequestParam("v_id") int v_id,
 			@RequestParam("pname") String pname, @RequestParam("pdesc") String pdesc,
 			@RequestParam("psize") String psize, @RequestParam("pbrand") String pbrand,
-			@RequestParam("pprice") float pprice, @RequestParam("pqty") int pqty) throws Exception {
-		return pservice.vaddproduct(c_id, v_id, pname, pdesc, psize, pbrand, pprice, pqty);
+			@RequestParam("pprice") float pprice, @RequestParam("pqty") int pqty, @RequestParam("image_url") String image_url) throws Exception {
+		return pservice.vaddproduct(c_id, v_id, pname, pdesc, psize, pbrand, pprice, pqty, image_url);
 	}
 
 	@GetMapping("/viewoutofstock")

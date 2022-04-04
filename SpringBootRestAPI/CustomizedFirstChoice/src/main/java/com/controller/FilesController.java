@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-
 @CrossOrigin("*")
 @RestController
 public class FilesController {
@@ -21,7 +20,7 @@ public class FilesController {
     @Autowired
     FilesStorageService storageService;
 
-    @PostMapping(name = "/upload_product_image" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping("/upload_product_image")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) throws FileUploadException {
         storageService.save(file);
         String message = "Uploaded the file successfully: " + file.getOriginalFilename();
