@@ -9,14 +9,14 @@
     display: flex;
     z-index: 1;
     margin-left: 5px;
-    float:left;
+    /* float:left; */
     margin-right: 5px;
 }
 .vhome_row{
     display: flex;
     z-index: 1;
     margin-left: 5px;
-    float:left;
+    /* float:left; */
     margin-top:10px;
     margin-right: 5px;
     background-color: white;

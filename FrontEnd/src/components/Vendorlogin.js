@@ -111,7 +111,7 @@ class VendorLogin extends React.Component {
                     </Form.Group>
                     <p>By signing in you will agree all the terms & condition by SAPIENS</p>
                     <button type="submit" className='innerbutton' onClick={this.signIn}>Sign In</button><br />
-                    <Link to="/vendorregister" ><button className='innerbutton'> Create your Vendor's Sapiens Account</button></Link>
+                    <Link to="/vendorregister" ><button className='innerbutton'> Create your Vendor's First Choice Account</button></Link>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
                     </Form.Group>

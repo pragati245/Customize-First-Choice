@@ -63,7 +63,7 @@ export default class AdminHome extends React.Component {
                     <div className='vhome'>
                         <div className='vhome_container'>
                             <div className='vhome_row'>
-                                <table>
+                                <table  style={{textAlign: 'center'}}>
                                     <tr>
                                         <th>Vendor ID</th>
                                         <th>Vendor UniqueId</th>
@@ -100,7 +100,7 @@ export default class AdminHome extends React.Component {
                         <div className='vhome'>
                         <div className='vhome_container'>
                             <div className='vhome_row'>
-                                <table>
+                                <table  style={{textAlign: 'center'}}>
                                     <tr>
                                         <th>Product ID</th>
                                         <th>Product Name</th>

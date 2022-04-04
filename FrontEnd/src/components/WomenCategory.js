@@ -42,7 +42,7 @@ class WomenCategory extends React.Component {
 
                                             return (
                                                 <div className=''>
-                                                    <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating} />
+                                                    <Product id={o.pid} title={o.pname} price={o.pprice} image={Photo2} brand={o.pbrand} describe={o.pdesc} size={o.psize} rating={o.prating} imageUrl={o.imageUrl}/>
                                                 </div>
                                             );
                                         }

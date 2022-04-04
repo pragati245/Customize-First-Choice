@@ -82,6 +82,9 @@ function Header() {
                         <NavLink to={"/stitched"} className={window.location.pathname === "/stitched" ? "headerLink headerLinkActive" : "headerLink"}>
                             Stitched
                         </NavLink>
+                        <NavLink to={"/about-us"} className={window.location.pathname === "/about-us" ? "headerLink headerLinkActive" : "headerLink"}>
+                            About Us
+                        </NavLink>
 
                     </Nav>
                     <Form className="d-flex" onSubmit={() => (setText(textInput.current.value))}>

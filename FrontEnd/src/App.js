@@ -33,6 +33,7 @@ import AddMoney from './components/AddMoney.js';
 import Wallet from './components/Wallet.js';
 import Awallet from './components/Awallet.js';
 import Vwallet from './components/Vwallet.js';
+import AboutUs from './components/AboutUs.js';
 function App() {
  
   return (
@@ -85,11 +86,11 @@ function App() {
         <Route path="/awallet" element={<><AdminHeader /><Awallet/></>}/>
         <Route path="/vwallet" element={<><VendorHeader /><Vwallet/></>}/>
         <Route path="/raw" element={<><Header/>
-          <MenCategory />
-          <Footer/></>}/>
+          <MenCategory /></>}/>
         <Route path="/stitched" element={<><Header/>
-          <WomenCategory />
-          <Footer/></>}/>
+          <WomenCategory /></>}/>
+        <Route path="/about-us" element={<><Header/>
+          <AboutUs /></>}/>
       </Routes>
     </div>
     </Router>
