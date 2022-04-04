@@ -24,5 +24,3 @@ User when buys, quantity of products available in staock not reducing
 Pending:
 All orders in Admin
 Images
-Add money
-when adding product increate its value by 10 percent
