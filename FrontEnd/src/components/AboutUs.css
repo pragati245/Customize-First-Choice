@@ -1,0 +1,15 @@
+.aboutDiv{
+    text-align: center;
+    margin-top:10px;
+}
+.aboutHead{
+    font-size:23px;
+    color: #6e1230;
+    font-weight: bold;
+}
+.aboutText{
+    font-size:20px;
+    color: #6e1230;
+    line-height:26px;
+    text-align: left;
+}

@@ -101,7 +101,7 @@
     padding: 10px;
 
   }
-  .headerLink:focus{
+  .headerLink:focus,.headerLink:hover{
     color:#6e1230;
     text-decoration: none;
   }

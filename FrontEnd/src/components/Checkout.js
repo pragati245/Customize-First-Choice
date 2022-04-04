@@ -26,6 +26,8 @@ function Checkout() {
                         rating={item.prating}
                         quantity={item.quantity}
                         p_qty={item.p_qty}
+                        c_type={item.c_type}
+                        c_name={item.c_name}
                         />
                     ))}
                 </div>

@@ -55,7 +55,7 @@ export default class ViewOutofStock extends React.Component {
                         )    
                     }
                     </table> */}
-                                <Table striped bordered hover>
+                                <Table striped bordered hover  style={{textAlign: 'center'}}>
                                     <thead>
                                         <tr style={{ backgroundColor: "#6e1230", color: "white" }}>
                                             <th>Product ID</th>
@@ -74,7 +74,7 @@ export default class ViewOutofStock extends React.Component {
                                                 (o) => {
                                                     return (
                                                         <tr>
-                                                            <td>{o.pid}</td>
+                                                            <td>{o.p_id}</td>
                                                             <td>{o.pname}</td>
                                                             <td>{o.pdesc}</td>
                                                             <td>{o.psize}</td>

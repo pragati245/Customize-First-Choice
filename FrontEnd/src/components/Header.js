@@ -7,8 +7,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link, NavLink } from 'react-router-dom';
 import { useStateValue } from './Stateprovider';
 import { Navbar, Nav, Button, Form, FormControl, Container } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+    const history = useNavigate()
     const [{ basket }] = useStateValue();
     const [text, setText] = useState("");
     let textInput = React.createRef();
@@ -21,7 +23,14 @@ function Header() {
             window.location.href = '/login';
         }
     }
-    console.log(sign);
+    const makeSearchReq = (e) => {
+        e.preventDefault();
+        localStorage.setItem('searchText', textInput.current.value)
+        // history('/search')
+        history('/search', { state: textInput.current.value });
+    
+        // localStorage.removeItem('text')
+      }
     return (
 
         // <div className='header'>
@@ -82,9 +91,13 @@ function Header() {
                         <NavLink to={"/stitched"} className={window.location.pathname === "/stitched" ? "headerLink headerLinkActive" : "headerLink"}>
                             Stitched
                         </NavLink>
+                        <NavLink to={"/about-us"} className={window.location.pathname === "/about-us" ? "headerLink headerLinkActive" : "headerLink"}>
+                            About Us
+                        </NavLink>
 
                     </Nav>
-                    <Form className="d-flex" onSubmit={() => (setText(textInput.current.value))}>
+                    {/* <Form className="d-flex" onSubmit={() => (setText(textInput.current.value))}> */}
+                    <Form className="d-flex" onSubmit={(e) => (makeSearchReq(e))}>
                         <FormControl
                             type="search"
                             placeholder="Search"
