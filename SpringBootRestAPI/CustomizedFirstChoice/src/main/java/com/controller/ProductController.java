@@ -51,7 +51,7 @@ public class ProductController {
 
 	@GetMapping("/search/{data}")
 	public List<Product> searchRaw(@PathVariable("data") String data) {
-		return pservice.getAllRaw().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
+		return pservice.getAllProducts().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
 	}
 
 
