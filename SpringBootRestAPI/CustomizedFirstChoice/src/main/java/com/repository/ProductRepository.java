@@ -42,9 +42,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	public int cidReturn(String c_type, String c_name);
 
 	@Modifying
-	@Query(value = "insert into product(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty,prating)	values(?1,?2,?3,?4,?5,?6,?7,?8,3)", nativeQuery = true)
+	@Query(value = "insert into product(c_id,v_id,pname,pdesc,psize,pbrand,pprice,pqty,prating,image_url)	values(?1,?2,?3,?4,?5,?6,?7,?8,3,?9)", nativeQuery = true)
 	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
-			int pqty);
+						   int pqty, String image_url);
 
 	@Query(value = "select * from product where pqty=0 AND v_id=?1", nativeQuery = true)
 	public List<Product> viewOutOfStock(int v_id);

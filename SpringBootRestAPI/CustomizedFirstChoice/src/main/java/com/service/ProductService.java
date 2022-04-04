@@ -69,9 +69,9 @@ public class ProductService {
 		return parepo.getAllprojectaudit();
 	}
 	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
-			int pqty) throws Exception {
+						   int pqty, String image_url) throws Exception {
 		try{
-			return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice*1.1f,pqty);
+			return prepo.vaddproduct(c_id,v_id,pname,pdesc,psize,pbrand,pprice*1.1f,pqty, image_url);
 		}
 		catch (Exception ex){
 			throw new Exception("Adding product failed"+ ex.getMessage());
