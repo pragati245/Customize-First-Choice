@@ -5,13 +5,7 @@ import java.util.stream.Collectors;
 
 import com.service.FilesStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.entities.Product;
 import com.entities.ProductAudit;
 import com.service.ProductService;
@@ -52,6 +46,18 @@ public class ProductController {
 	@GetMapping("/raw")
 	public List<Product> getAllRaw() {
 		return pservice.getAllRaw().stream().filter(e -> e.getPqty()>0).collect(Collectors.toList());
+	}
+
+
+	@GetMapping("/search/{data}")
+	public List<Product> searchRaw(@PathVariable("data") String data) {
+		return pservice.getAllRaw().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
+	}
+
+
+	@GetMapping("/search/stitched/{data}")
+	public List<Product> searchStitched(@PathVariable("data") String data) {
+		return pservice.getAllRaw().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
 	}
 
 	@GetMapping("/stitched")

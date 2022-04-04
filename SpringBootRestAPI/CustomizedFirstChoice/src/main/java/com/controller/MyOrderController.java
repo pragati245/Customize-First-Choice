@@ -25,6 +25,7 @@ public class MyOrderController {
 			return new ResponseEntity(order, HttpStatus.OK);
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
