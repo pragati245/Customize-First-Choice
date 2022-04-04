@@ -24,3 +24,7 @@ User when buys, quantity of products available in staock not reducing
 Pending:
 All orders in Admin
 Images
+
+
+ngrok http -host-header=rewrite 3000
+
