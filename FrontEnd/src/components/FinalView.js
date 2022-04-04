@@ -11,8 +11,8 @@ function FinalView({id,title,price,image,rating}) {
             <div className='checkoutProduct_info'>
                 <p className='checkoutProduct_title'>{title}</p>
                 <p className='checkoutProduct_price'>
-                    <small>Rs</small>
-                    <strong>{price}</strong>
+                    <small></small>
+                    <strong>₹{price}</strong>
                 </p>
                 <p className='checkoutProduct_rating'>
                     {Array(rating).fill().map((_,i)=>(<p>⭐</p>))}

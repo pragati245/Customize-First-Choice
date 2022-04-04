@@ -17,7 +17,7 @@ export default class ViewOrderbyuid extends React.Component {
         window.location.href = "/";
     }
     componentDidMount = async () => {
-
+        if(localStorage.getItem('data1') && this.state.sign!== undefined && this.state.sign.u_id !== undefined ){
         await fetch(process.env.REACT_APP_BASE_URL + "/user/" + this.state.sign.u_id)
             .then(resp => resp.json())
             .then(data => {
@@ -26,6 +26,7 @@ export default class ViewOrderbyuid extends React.Component {
                 localStorage.setItem('data1', JSON.stringify(sign));
                 this.setState({ walletBalance: data.wallet })
             });
+        }
     }
     render() {
         const to1 = this.state.sign;

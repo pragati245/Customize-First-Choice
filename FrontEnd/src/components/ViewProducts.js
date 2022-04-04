@@ -73,7 +73,7 @@ export default class ViewProducts extends React.Component {
                                                 (o) => {
                                                     return (
                                                         <tr>
-                                                            <td>{o.pid}</td>
+                                                            <td>{o.p_id}</td>
                                                             <td>{o.pname}</td>
                                                             <td>{o.pdesc}</td>
                                                             <td>{o.psize}</td>

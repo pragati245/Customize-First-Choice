@@ -109,7 +109,7 @@ class VendorLogin extends React.Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type='password' name="vpassword" value={this.state.vpassword} onChange={this.handleChange} />
                     </Form.Group>
-                    <p>By signing in you will agree all the terms & condition by SAPIENS</p>
+                    <p>By signing in you will agree all the terms & condition by First Choice</p>
                     <button type="submit" className='innerbutton' onClick={this.signIn}>Sign In</button><br />
                     <Link to="/vendorregister" ><button className='innerbutton'> Create your Vendor's First Choice Account</button></Link>
                     <Form.Group className="mb-2" controlId="formBasicEmail">

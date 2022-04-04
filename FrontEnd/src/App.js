@@ -53,8 +53,7 @@ function App() {
         <Route path="/vendorlogin" element={<><Vendorlogin /></>}/>
         <Route path="/adminlogin" element={<><Adminlogin /></>}/>
         <Route path="/search" element={<><Header/>
-          <Search />
-          <Footer/></>}/>
+          <Search /></>}/>
         <Route path="/vendor" element={<><VendorHeader />
           <VendorHome/></>}/>
         <Route path="/admin" element={<><AdminHeader />

@@ -22,9 +22,14 @@ var phantom = {
   height: '60px',
   width: '100%',
 }
+var footer = {
+    bottom: '0px',
+    position: 'relative',
+    width:' 100%',
+}
 function Footer(props) {
     return (
-        <div>
+        <div style={footer}>
             <div style={phantom} />
             <div style={style}>
             <div className="mb-2"><img src={Logo} alt="Logo" style={{width:"100px"}}/></div>
