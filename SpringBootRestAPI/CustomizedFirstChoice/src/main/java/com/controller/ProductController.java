@@ -7,7 +7,6 @@ import com.service.FilesStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.entities.Product;
-import com.entities.ProductAudit;
 import com.service.ProductService;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;

@@ -7,16 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.entities.Product;
-import com.entities.ProductAudit;
-import com.repository.ProductAuditRepository;
 import com.repository.ProductRepository;
 
 @Service
 public class ProductService {
 	@Autowired
 	ProductRepository prepo;
-	@Autowired
-	ProductAuditRepository parepo;
 
 	public List<Product> getAllProducts() {
 		return prepo.findAll().stream().filter(e -> e.getPqty()>0).collect(Collectors.toList());
@@ -64,9 +60,6 @@ public class ProductService {
 			return false;
 		}
 		
-	}
-	public List<ProductAudit> getAllProductAudit() {
-		return parepo.getAllprojectaudit();
 	}
 	public int vaddproduct(int c_id, int v_id, String pname, String pdesc, String psize, String pbrand, float pprice,
 						   int pqty, String image_url) throws Exception {
