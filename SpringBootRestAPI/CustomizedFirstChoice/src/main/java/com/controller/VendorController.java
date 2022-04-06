@@ -34,7 +34,7 @@ public class VendorController
 		if(value!=null)
 			return new ResponseEntity(value, HttpStatus.OK);
 		else
-			return new ResponseEntity(false, HttpStatus.FORBIDDEN);
+			return new ResponseEntity("Wrong Username and Password", HttpStatus.FORBIDDEN);
 		//return userservice.loginUser(user);
 
 		

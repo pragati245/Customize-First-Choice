@@ -45,12 +45,11 @@ public class UserController
 	
 	@PostMapping("/loginuser")
 	//public ResponseEntity<User> loginUser(@RequestBody User user)
-	public ResponseEntity<User> loginUser(@RequestBody User user) throws AuthenticationException {
+	public ResponseEntity loginUser(@RequestBody User user) throws AuthenticationException {
 		User foundUser = userservice.loginUser(user);
 		if(foundUser!=null)
 			return new ResponseEntity<>(foundUser, HttpStatus.OK);
-		else 
-			return new ResponseEntity<>(foundUser, HttpStatus.FORBIDDEN);
+		return new ResponseEntity<>("Wrong Username and Password", HttpStatus.FORBIDDEN);
 	}
 	
 	@PutMapping("/updateuser")

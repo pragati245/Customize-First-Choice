@@ -28,7 +28,7 @@ public class UserService
 	}
 
 	//login
-	public User loginUser(User user) throws AuthenticationException {
+	public User loginUser(User user) {
 		// TODO Auto-generated method stub
 		
 		User user1=userrepo.findByEmail(user.getU_email(),user.getU_password());
