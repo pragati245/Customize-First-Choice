@@ -95,10 +95,10 @@ function Product({
             {/* <small>Rs </small> */}
             <strong>₹{price}</strong>
           </Card.Text>
-          <Card.Text>
+          <Card.Text style={{ marginBottom: '0px' }}>
             {c_type === 'RAW'
-              ? ' Total Meters in inventory :'
-              : 'Total Stocks in inventory :'}
+              ? 'Available Stocks :'
+              : 'Available Stocks :'}
             <strong>
               {p_qty} {c_type === 'RAW' ? 'mtrs' : ''}
             </strong>
