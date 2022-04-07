@@ -102,7 +102,6 @@ public class MyOrderService {
 		float updatedAdminWallet = admin.getA_wallet() + (price*0.1f);
 		admin.setA_wallet(updatedAdminWallet);
 		adminRepo.save(admin);
-		System.out.println(updatedAdminWallet);
 		return orderEntity;
 	}
 
