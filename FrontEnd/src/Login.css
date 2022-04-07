@@ -14,7 +14,7 @@
     margin-right:auto;
     margin-left:auto;
 }
-.login_container > button{
+/* .login_container > button{
     background: #6e1230;
     border-radius: 2px;
     width:100%;
@@ -24,7 +24,7 @@
     border-color:#6e1230 #6e1230 #6e1230;
     color:White;
     border-radius:8px;
-}
+} */
 .login_container{
     height:fit-content;
     flex-direction: column;
@@ -33,7 +33,7 @@
     background-color: white;
     padding:50px;
 }
-.login_container> form > button{
+/* .login_container> form > button{
     background: #6e1230;
     border-radius: 2px;
     width:100%;
@@ -42,7 +42,7 @@
     border-color:#6e1230 #6e1230 #6e1230;
     color:White;
     border-radius:8px;
-}
+} */
 .login_container>h1{
    font-weight: 500;
    margin-bottom:20px;
@@ -80,4 +80,14 @@
     width:100px;
     margin-right:auto;
     margin-left:auto;
+}
+.inactivebtn{
+    background: #613845 !important;
+    border-radius: 2px;
+    width:100%;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin-top:10px;
+    border-color:#6e1230 #6e1230 #6e1230;
+    color:#a6a6a6;
+    height:38px;
 }
