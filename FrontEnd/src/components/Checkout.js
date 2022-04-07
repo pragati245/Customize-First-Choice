@@ -24,7 +24,7 @@ function Checkout() {
             <CheckoutProduct
               id={item.pid}
               title={item.pname}
-              image={item.imageUrl}
+              image={item.imageUrl ? item.imageUrl : item.pimage}
               price={item.pprice}
               rating={item.prating}
               quantity={item.quantity}
