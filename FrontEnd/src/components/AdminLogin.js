@@ -13,15 +13,73 @@ class AdminLogin extends React.Component {
         this.state = {
             msg: "",
             adminid: "",
-            apassword: ""
+            apassword: "",
+            isError: false,
+            isFormValid: false,
+            inputElements: {
+                email: {
+                    validation: {
+                        required: true,
+                        isEmail: true,
+                    },
+                    valid: false,
+                    touched: false,
+                    invalidText: "Invalid Email",
+                },
+            }
         }
     }
+    checkValidity = (value, rules) => {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
 
+        if (rules.required) {
+            isValid = value.trim() !== "" && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        if (rules.isEmail) {
+            const pattern =
+                /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid;
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid;
+        }
+
+        return isValid;
+    }
     handleChange = (e) => {
+        this.setState({ isError: false })
         const input = e.target;
         const nm = input.name;
         const val = input.value;
         this.setState({ [nm]: val });
+        if (e.target.name === "adminid") {
+            if (this.checkValidity(e.target.value, this.state.inputElements.email.validation)) {
+                this.setState({ inputElements: { ...this.state.inputElements, email: { ...this.state.inputElements.email, touched: true, valid: true } } })
+            }
+            else {
+                this.setState({ inputElements: { ...this.state.inputElements, email: { ...this.state.inputElements.email, touched: true, valid: false } } })
+            }
+            let formIsValid = true;
+            for (let inputIdentifier in this.state.inputElements) {
+                formIsValid = this.state.inputElements[inputIdentifier].valid && formIsValid;
+            }
+            this.setState({ isFormValid: formIsValid })
+            console.log(this.state.inputElements)
+        }
     }
 
     signIn = async (e) => {
@@ -51,7 +109,10 @@ class AdminLogin extends React.Component {
                     alert("Wrong ID/Password");
                     window.location.href = '/adminlogin';
                 }
-            });
+            }).catch((error) => {
+                console.log(error);
+                this.setState({ isError: true })
+            })
 
     }
 
@@ -68,16 +129,22 @@ class AdminLogin extends React.Component {
                         {/* <h5>Admin ID</h5><input type='number' name="adminid" value={this.state.adminid}  onChange={this.handleChange}/>
                     <h5>Password</h5><input type='password' name="apassword" value={this.state.apassword}  onChange={this.handleChange}/><br/> */}
                         <Form.Group className="mb-2">
-                            <Form.Label>Admin</Form.Label>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control type='email' name="adminid" value={this.state.adminid} onChange={this.handleChange} />
+                            {(!this.state.inputElements.email.valid && this.state.inputElements.email.touched) && <div style={{ color: "red" }}> {this.state.inputElements.email.invalidText}</div>}
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type='password' name="apassword" value={this.state.apassword} onChange={this.handleChange} />
                         </Form.Group>
-                        <button className='innerbutton' onClick={this.signIn}>Sign In</button><br />
+                        {this.state.isError &&
+                            <Form.Text style={{ color: 'red' }}>
+                                Incorrect Email and Password
+                            </Form.Text>
+                        }
+                        <button disabled={!this.state.isFormValid} className={this.state.isFormValid ? 'innerbutton' : "inactivebtn"} onClick={this.signIn}>Sign In</button><br />
                         <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
+                            <Link to="/login" ><button className='innerbutton'><ArrowBackIcon />Back</button></Link><br />
                         </Form.Group>
                     </form>
                 </div>

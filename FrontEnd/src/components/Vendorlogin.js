@@ -13,15 +13,74 @@ class VendorLogin extends React.Component {
         this.state = {
             msg: "",
             vemail: "",
-            vpassword: ""
+            vpassword: "",
+            isError: false, //
+            isFormValid: false,
+            inputElements: {
+                email: {
+                    validation: {
+                        required: true,
+                        isEmail: true,
+                    },
+                    valid: false,
+                    touched: false,
+                    invalidText: "Invalid Email",
+                },
+            }
+
         }
     }
+    checkValidity = (value, rules) => {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
 
+        if (rules.required) {
+            isValid = value.trim() !== "" && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        if (rules.isEmail) {
+            const pattern =
+                /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid;
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid;
+        }
+
+        return isValid;
+    }
     handleChange = (e) => {
+        this.setState({ isError: false })
         const input = e.target;
         const nm = input.name;
         const val = input.value;
         this.setState({ [nm]: val });
+        if (e.target.name === "vemail") {
+            if (this.checkValidity(e.target.value, this.state.inputElements.email.validation)) {
+                this.setState({ inputElements: { ...this.state.inputElements, email: { ...this.state.inputElements.email, touched: true, valid: true } } })
+            }
+            else {
+                this.setState({ inputElements: { ...this.state.inputElements, email: { ...this.state.inputElements.email, touched: true, valid: false } } })
+            }
+            let formIsValid = true;
+            for (let inputIdentifier in this.state.inputElements) {
+                formIsValid = this.state.inputElements[inputIdentifier].valid && formIsValid;
+            }
+            this.setState({ isFormValid: formIsValid })
+            console.log(this.state.inputElements)
+        }
     }
 
     signIn = (e) => {
@@ -81,13 +140,14 @@ class VendorLogin extends React.Component {
                 }
             })
             .catch((error) => {
-                console.error('Error:', error);
-                alert(error);
-            });
+                console.log(error);
+                this.setState({ isError: true })
+            })
 
     }
 
     render() {
+
         return (
             <div className='login' >
                 <Link to="/">
@@ -104,16 +164,22 @@ class VendorLogin extends React.Component {
                     <Form.Group className="mb-2">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type='text' name="vemail" value={this.state.vemail} onChange={this.handleChange} onChange={this.handleChange} />
+                        {(!this.state.inputElements.email.valid && this.state.inputElements.email.touched) && <div style={{ color: "red" }}> {this.state.inputElements.email.invalidText}</div>}
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type='password' name="vpassword" value={this.state.vpassword} onChange={this.handleChange} />
                     </Form.Group>
                     <p>By signing in you will agree all the terms & condition by First Choice</p>
-                    <button type="submit" className='innerbutton' onClick={this.signIn}>Sign In</button><br />
+                    <button type="submit" disabled={!this.state.isFormValid} className={this.state.isFormValid ? 'innerbutton' : "inactivebtn"} onClick={this.signIn}>Sign In</button><br />
+                    {this.state.isError &&
+                        <Form.Text style={{ color: 'red' }}>
+                            Incorrect Email and Password
+                        </Form.Text>
+                    }
                     <Link to="/vendorregister" ><button className='innerbutton'> Create your Vendor's First Choice Account</button></Link>
                     <Form.Group className="mb-2" controlId="formBasicEmail">
-                        <Link to="/login" ><button className='innerbutton'><ArrowBackIcon/>Back</button></Link><br />
+                        <Link to="/login" ><button className='innerbutton'><ArrowBackIcon />Back</button></Link><br />
                     </Form.Group>
                 </div>
             </div>

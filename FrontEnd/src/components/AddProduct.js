@@ -334,6 +334,7 @@ export default class AddProduct extends React.Component {
             <Form.Label>Product Image</Form.Label>
             <Form.Control type="file" onChange={this.onChangeImage} />
           </Form.Group>
+          <span style={{color: 'red'}}>*Upload Imgage within 2MB size</span>
           {this.state.p_image !== null && this.state.p_image1 == undefined && (
             <div>
               <img
