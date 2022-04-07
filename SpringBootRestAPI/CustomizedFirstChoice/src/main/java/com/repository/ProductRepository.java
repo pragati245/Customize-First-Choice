@@ -26,6 +26,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "select * from product where v_id =?1", nativeQuery = true)
 	public List<Product> getByVid(int v_id);
 
+
+	@Query(value = "select * from product where v_id =?1", nativeQuery = true)
+	public List<Product> search(int v_id);
+
 	@Modifying
 	@Query(value = "delete from productaudit where pid=?1", nativeQuery = true)
 	public void productAudit(int pid);

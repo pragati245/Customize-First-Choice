@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.service.FilesStorageService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.entities.Product;
@@ -50,13 +51,9 @@ public class ProductController {
 
 	@GetMapping("/search/{data}")
 	public List<Product> searchRaw(@PathVariable("data") String data) {
-		return pservice.getAllProducts().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
-	}
-
-
-	@GetMapping("/search/stitched/{data}")
-	public List<Product> searchStitched(@PathVariable("data") String data) {
-		return pservice.getAllRaw().stream().filter(e -> e.getPname().contains(data)).collect(Collectors.toList());
+		return pservice.getAllProducts().stream().filter((e) -> {
+			return StringUtils.containsIgnoreCase(e.getPname(),data) || StringUtils.containsIgnoreCase(e.getPbrand(),data);
+		}).collect(Collectors.toList());
 	}
 
 	@GetMapping("/stitched")

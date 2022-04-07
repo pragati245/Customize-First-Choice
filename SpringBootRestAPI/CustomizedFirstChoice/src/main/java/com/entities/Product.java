@@ -19,7 +19,6 @@ public class Product {
 	private String pname;
 
 	private String pdesc;
-	// img1 and img2
 	
 	private String psize;
 	
