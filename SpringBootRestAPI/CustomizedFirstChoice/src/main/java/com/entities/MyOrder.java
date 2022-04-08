@@ -15,7 +15,6 @@ public class MyOrder {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int o_id;
 
-	private String uname;
 	private String address;
 	private String contactno;
 	private float totalprice;
@@ -34,10 +33,9 @@ public class MyOrder {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MyOrder(String uname, String address, String contactno, float totalprice, String ostatus,
+	public MyOrder( String address, String contactno, float totalprice, String ostatus,
 			User user) {
 		super();
-		this.uname = uname;
 		this.address = address;
 		this.contactno = contactno;
 		this.totalprice = totalprice;
@@ -54,16 +52,6 @@ public class MyOrder {
 
 	public void setOid(int oid) {
 		this.o_id = oid;
-	}
-
-
-	public String getUname() {
-		return uname;
-	}
-
-
-	public void setUname(String uname) {
-		this.uname = uname;
 	}
 
 
@@ -100,15 +88,6 @@ public class MyOrder {
 		this.ostatus = ostatus;
 	}
 
-//	public List<Product> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}
-
-
 	public User getUser() {
 		return user;
 	}
@@ -135,7 +114,7 @@ public class MyOrder {
 
 	@Override
 	public String toString() {
-		return "MyOrder [oid=" + o_id + ", uname=" + uname + ", address=" + address + ", contactno=" + contactno
+		return "MyOrder [oid=" + o_id + ", address=" + address + ", contactno=" + contactno
 				+ ", totalprice=" + totalprice +  ", ostatus=" + ostatus  + "]";
 	}
 }

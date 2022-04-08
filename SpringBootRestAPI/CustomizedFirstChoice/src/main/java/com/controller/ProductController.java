@@ -66,12 +66,6 @@ public class ProductController {
 		return pservice.getByVid(v_id);
 	}
 
-	@GetMapping("/productstatusaction")
-	public void productStatusAction(@RequestParam("p_id") int p_id,@RequestParam("pprice") float pprice,@RequestParam("pqty") int pqty,@RequestParam("action") String action)
-	{
-		pservice.productStatusAction(p_id,pprice,pqty,action);
-	}
-
 	@GetMapping("/vaddproduct")
 	public int vaddproduct(@RequestParam("c_id")int c_id, @RequestParam("v_id") int v_id,
 			@RequestParam("pname") String pname, @RequestParam("pdesc") String pdesc,
