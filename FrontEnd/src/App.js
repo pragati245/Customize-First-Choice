@@ -5,8 +5,8 @@ import Checkout from './components/Checkout';
 import Login from './components/Login.js';
 import Footer from './components/Footer.js';
 import Search from './components/Search.js';
-import MenCategory from './components/MenCategory.js';
-import WomenCategory from './components/WomenCategory.js';
+import RawProducts from './components/RawProducts.js';
+import StitchedProducts from './components/WomenCategory.js';
 import Vendorlogin from './components/Vendorlogin.js';
 import VendorHome from './components/VendorHome.js';
 import Adminlogin from './components/AdminLogin.js';
@@ -85,9 +85,9 @@ function App() {
         <Route path="/awallet" element={<><AdminHeader /><Awallet/></>}/>
         <Route path="/vwallet" element={<><VendorHeader /><Vwallet/></>}/>
         <Route path="/raw" element={<><Header/>
-          <MenCategory /></>}/>
+          <RawProducts /></>}/>
         <Route path="/stitched" element={<><Header/>
-          <WomenCategory /></>}/>
+          <StitchedProducts /></>}/>
         <Route path="/about-us" element={<><Header/>
           <AboutUs /></>}/>
       </Routes>
