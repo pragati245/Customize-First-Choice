@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Home.css'
-import baner from '../BGIMG.png'
 import Photo2 from '../Photo2.jpg'
 import Product from './Product.js'
 import { Container, Row } from 'react-bootstrap'

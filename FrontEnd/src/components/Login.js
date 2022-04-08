@@ -157,7 +157,7 @@ function LoginIn() {
                     <button disabled={!(isFormValid && isCheckTerms)} className={(isFormValid && isCheckTerms) ? 'innerbutton' : "inactivebtn"} type="submit" onClick={(e) => signIn(e)}>Sign In</button><br />
 
                 </form><br />
-                <Link to="/forgetpass"><p /*onClick={()=> window.location.href = '/forgetpass'}*/ style={{ textAlign: 'center' }}>Forget Password</p></Link>
+                {/* <Link to="/forgetpass"><p style={{ textAlign: 'center' }}>Forget Password</p></Link> */}
 
                 <Link to="/register" ><button className='innerbutton'> Create Account</button></Link>
                 <Link to="/vendorlogin" ><button className='innerbutton mt-3'> Vendor Login</button></Link>

@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Checkout.css';
-import baner from '../Ad.png';
 import Subtotal from './Subtotal';
 import {useStateValue} from './Stateprovider';
 import CheckoutProduct from './CheckoutProduct.js';
