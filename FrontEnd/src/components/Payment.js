@@ -87,7 +87,7 @@ function Payment() {
                         {basket.map(item => (
                             <FinalView id={item.pid}
                                 title={item.pname}
-                                image={item.pimage}
+                                image={item.imageUrl ? item.imageUrl : item.pimage}
                                 price={item.pprice}
                                 rating={item.prating}
                             />
