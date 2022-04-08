@@ -17,7 +17,7 @@ export default class ViewOrderbyuid extends React.Component {
         return (
             <Container>
                 <div style={{ textAlign: "center" }}>
-                    <Link to="/admin" >
+                    <Link to="/viewproducts" >
                         <img className='login_img' src={Logo} alt='logo' />
                     </Link>
                 </div>

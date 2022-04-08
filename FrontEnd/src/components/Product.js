@@ -52,24 +52,6 @@ function Product({
     }
   }
   return (
-    // <div className='product'>
-    //     <img className='product_img' src={image} alt="productImg" />
-    //     <div className='product_info'>
-    //         <p>{title}</p>
-    //         <p>{describe}</p>
-    //         <p>{size}</p>
-    //         <p>{brand}</p>
-    //         <p className='product_price'>
-    //             <small>Rs</small>
-    //             <strong>{price}</strong>
-    //         </p>
-
-    //         <div className='product_rating'>
-    //             {Array(rating).fill().map((_, i) => (<p>⭐</p>))}
-    //         </div>
-    //     </div>
-    //     <button onClick={addToBasket}>Add to Basket</button>
-    // </div>
     <Col>
       <Card
         style={{

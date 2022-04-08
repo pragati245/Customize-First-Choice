@@ -6,7 +6,6 @@ import CheckoutProduct from './CheckoutProduct.js';
 
 function Checkout() {
   const [{ basket }] = useStateValue()
-  console.log(basket)
   let sign = JSON.parse(localStorage.getItem('data1'))
   return (
     <div className="checkout">

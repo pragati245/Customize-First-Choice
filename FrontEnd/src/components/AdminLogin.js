@@ -126,11 +126,10 @@ class AdminLogin extends React.Component {
                 <div className='login_container'>
                     <h1>Admin Sign-in</h1>
                     <form>
-                        {/* <h5>Admin ID</h5><input type='number' name="adminid" value={this.state.adminid}  onChange={this.handleChange}/>
-                    <h5>Password</h5><input type='password' name="apassword" value={this.state.apassword}  onChange={this.handleChange}/><br/> */}
                         <Form.Group className="mb-2">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='email' name="adminid" value={this.state.adminid} onChange={this.handleChange} />
+
                             {(!this.state.inputElements.email.valid && this.state.inputElements.email.touched) && <div style={{ color: "red" }}> {this.state.inputElements.email.invalidText}</div>}
                         </Form.Group>
                         <Form.Group className="mb-2">

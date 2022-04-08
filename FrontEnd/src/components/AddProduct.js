@@ -229,30 +229,6 @@ export default class AddProduct extends React.Component {
     return (
       <div className="register">
         <div className="register_container">
-          {/* <form >
-                        <select
-                            value={this.state.selectedOption}
-                            onChange={this.handleOption}>
-                            {this.state.cat.map((options) => (
-                                <option value={options.c_id}>{options.c_name} - {options.c_type}</option>
-                            ))}
-                        </select>
-
-                        <h5>Product Title</h5><input type='text' name="title" value={this.state.title} onChange={this.handleChange} /><br />
-                        <h5>Description</h5><input type='text' name="describe" value={this.state.describe} onChange={this.handleChange} /><br />
-                        <h5>Size</h5><input type='text' name="size" value={this.state.size} onChange={this.handleChange} /><br />
-                        <h5>Brand</h5><input type='text' name="brand" value={this.state.brand} onChange={this.handleChange} /><br />
-                        <h5>Quantity</h5><input type='number' name="qty" value={this.state.qty} onChange={this.handleChange} /><br />
-                        <h5>Price</h5><input type='float' name="price" value={this.state.price} onChange={this.handleChange} /><br />
-                        <Link to="/vendor"> <button className='innerbutton' type="submit" value="Submit" onClick={this.submitForm}>Add Product</button></Link><br />
-                    </form> */}
-          {/* <select
-                        value={this.state.selectedOption}
-                        onChange={this.handleOption}>
-                        {this.state.cat.map((options) => (
-                            <option value={options.c_id}>{options.c_name} - {options.c_type}</option>
-                        ))}
-                    </select> */}
           <Form.Group className="mb-3">
             <Form.Label>Select Category Name-Type</Form.Label>
             <Form.Select

@@ -18,7 +18,6 @@ export default class VendorHome extends React.Component {
         fetch(url)
             .then(resp => resp.json())
             .then(data => this.setState({ to: data ,loading: false}));
-
     }
     render() {
         return (
@@ -27,35 +26,6 @@ export default class VendorHome extends React.Component {
                 {this.state.to.length !== 0 ?
                     <div className='vhome_container'>
                         <div className='vhome_row'>
-                            {/* <table className="table table-bordered table-striped">
-                            <tr>
-                                <th>Product ID</th>
-                                <th>Product Title</th>
-                                <th>Product Describe</th>
-                                <th>Product Size</th>
-                                <th>Product Brand</th>
-                                <th>Product Price</th>
-                                <th>Product Rating</th>
-                            </tr>
-                            {
-                                this.state.to.map(
-                                    (o) => {
-                                        return (
-                                            <tr>
-                                                <td>{o.pid}</td>
-                                                <td>{o.pname}</td>
-                                                <td>{o.pdesc}</td>
-                                                <td>{o.psize}</td>
-                                                <td>{o.pbrand}</td>
-                                                <td>{o.pprice}</td>
-                                                <td>{o.prating}</td>
-
-                                            </tr>
-                                        );
-                                    }
-                                )
-                            }
-                        </table> */}
 
                             <Table striped bordered hover  style={{textAlign: 'center'}}>
                                 <thead>

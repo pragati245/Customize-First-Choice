@@ -147,17 +147,6 @@ export default class Register extends React.Component {
                 </Link>
                 <div className='register_container'>
                     <h1>User Sign-up</h1>
-                    {/* <form>
-                    <h5>First Name</h5><input type='text' name="fname" value={this.state.fname} onChange={this.handleChange}/><br/>
-                    <h5>Last Name</h5><input type='text' name="lname" value={this.state.lname} onChange={this.handleChange}/><br/>
-                    <h5>Email</h5><input type='text' name="email" value={this.state.email} onChange={this.handleChange}/><br/>
-                    <h5>Address</h5><input type='text' name="address" value={this.state.address} onChange={this.handleChange}/><br/>
-                    <h5>Contact Number</h5><input type='number'name="contactno" value={this.state.contactno} onChange={this.handleChange}/><br/>
-                    <h5>Password</h5><input type='password' name="password" value={this.state.password} onChange={this.handleChange}/><br/>
-                    <h5>Retype-Password</h5><input type='password' name="repassword" value={this.state.repassword} onChange={this.handleChange}/><br/>
-                    <Link to="register" ><button className='innerbutton' type="submit" onClick={this.submitForm}>Sign Up</button></Link><br/>
-                </form> */}
-
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter First Name" name="fname" value={this.state.fname} onChange={this.handleChange} />

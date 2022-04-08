@@ -11,7 +11,6 @@ import {useNavigate} from "react-router-dom";
 function Payment() {
     const history=useNavigate();
     const [{ basket }, dispatch] = useStateValue();
-    console.log(basket)
     const [data, setData] = useState("");
     let sign = JSON.parse(localStorage.getItem('data1'));
     const order = async () => {

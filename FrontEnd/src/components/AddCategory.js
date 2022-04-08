@@ -38,7 +38,6 @@ export default class AddProduct extends React.Component {
 
             })
         };
-
         await fetch(process.env.REACT_APP_BASE_URL + "/category/addcategory", reqData)
             .then(resp => resp.json())
             .then(data => this.setState({ st: data, success: true }));
@@ -65,7 +64,7 @@ export default class AddProduct extends React.Component {
                             <label for="STITCHED">STITCHED</label>
                             <input type="radio" value="RAW" id="RAW" onChange={this.handleChange} name="ctype" /><label for="RAW">RAW</label><br />
                         </div>
-                        <Link to="/admin"> <button className='innerbutton mt-3' type="submit" value="Submit" onClick={this.submitForm}>Add Category</button></Link><br />
+                        <Link to="/viewproducts"> <button className='innerbutton mt-3' type="submit" value="Submit" onClick={this.submitForm}>Add Category</button></Link><br />
                     </form>
                 </div>
             </div>

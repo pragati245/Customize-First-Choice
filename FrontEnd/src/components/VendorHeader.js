@@ -20,34 +20,6 @@ function VendorHeader(props) {
 
   return (
 
-    // <div className='vheader'>
-    //     <Link to="/vendor">
-    //       <HomeIcon className='vheader_homeIcon'/>
-    //     </Link>
-    //         <p className="vheader_value">Vendor</p>
-    //         <div className='vheader_category'>
-    //     <Link to="/addproduct">
-    //       <div className='vheader_category1'>Add Products</div>
-    //     </Link>
-    //     <Link to="/viewproductoutofstock">
-    //       <div className='vheader_category2'>Product Out Of Stock</div>
-    //     </Link>
-    //     <Link to="/vwallet">
-    //       <div className='vheader_category3'>Wallet</div>
-    //     </Link>
-    //     </div>
-    //     <div className='vheader_nav'>
-    //         <Link to={!sign && "/vendorlogin"}>
-    //             <div className='vheader_option'>
-    //              <span className='vheader_optionLineOne'>Hello {!sign ?'Vendor':sign.vfname}</span>
-    //              <span className='vheader_optionLineTwo' onClick={signOut}>{sign ? 'Sign Out' :'Sign In'}</span>
-    //             </div>
-    //         </Link> 
-
-    //     </div>
-
-    // </div>
-
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Link to="/vendor" className="navbar_brand"><Navbar.Brand > &nbsp;</Navbar.Brand></Link>

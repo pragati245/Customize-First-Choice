@@ -13,7 +13,7 @@ export default class Home extends React.Component {
     this.state = {
       to: [],
       loading: false,
-      isError:false
+      isError: false
     }
   }
 
@@ -21,17 +21,16 @@ export default class Home extends React.Component {
     this.setState({ loading: true })
     fetch(process.env.REACT_APP_BASE_URL + '/product/getallproducts')
       .then((resp) => resp.json())
-      .then((data) => this.setState({ to: data, loading: false })).catch(e=>{
-        this.setState({isError:true,loading:false})
+      .then((data) => this.setState({ to: data, loading: false })).catch(e => {
+        this.setState({ isError: true, loading: false })
       })
-
   }
   render() {
     return this.state.loading ? (
       <Loader />
-    ) : this.state.isError ? <h1>Something went wrong :(<br></br>Check your internet connection</h1>:(
+    ) : this.state.isError ? <h1>Something went wrong :(<br></br>Check your internet connection</h1> : (
       <div>
-        <Slider/>
+        <Slider />
         <div className="home">
           <Container className="mt-3">
             <Row xs={2} md={4} className="g-4 mt-2">
