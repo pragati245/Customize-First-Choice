@@ -25,7 +25,7 @@ export default class AddProduct extends React.Component {
         console.log(this.state.cname);
 
     }
-    submitForm = async (e) => {
+    submitForm = async(e) => {
         e.preventDefault();
         const reqData = {
             method: 'POST',
@@ -41,33 +41,57 @@ export default class AddProduct extends React.Component {
         await fetch(process.env.REACT_APP_BASE_URL + "/category/addcategory", reqData)
             .then(resp => resp.json())
             .then(data => this.setState({ st: data, success: true }));
-        window.location.href = "/admin";
+        window.location.href = "/viewcategory";
     }
     render() {
-        return (
-            <div className='register'>
-                <div className='register_container'>
-                    <form >
-                        {/* <h5>Category Name</h5> */}
-                        {/* <input type="text" name="cname" value={this.state.cname} onChange={this.handleChange1} /> */}
-                        <Form.Group className="mb-2">
-                            <Form.Label>Category Name</Form.Label>
-                            <Form.Control type="text" name="cname" value={this.state.cname} onChange={this.handleChange1} />
-                        </Form.Group>
+        return ( <
+            div className = 'register' >
+            <
+            div className = 'register_container' >
+            <
+            form > { /* <h5>Category Name</h5> */ } { /* <input type="text" name="cname" value={this.state.cname} onChange={this.handleChange1} /> */ } <
+            Form.Group className = "mb-2" >
+            <
+            Form.Label > Category Name < /Form.Label> <
+            Form.Control type = "text"
+            name = "cname"
+            value = { this.state.cname }
+            onChange = { this.handleChange1 }
+            /> <
+            /Form.Group>
 
-                        <br />
-                        <div className="category_type">
+            <
+            br / >
+            <
+            div className = "category_type" >
 
-                            <h5>Category Type</h5>
-                            <input type="radio" value="STITCHED" id="STITCHED" onChange={this.handleChange} name="ctype" />
+            <
+            h5 > Category Type < /h5> <
+            input type = "radio"
+            value = "STITCHED"
+            id = "STITCHED"
+            onChange = { this.handleChange }
+            name = "ctype" / >
 
-                            <label for="STITCHED">STITCHED</label>
-                            <input type="radio" value="RAW" id="RAW" onChange={this.handleChange} name="ctype" /><label for="RAW">RAW</label><br />
-                        </div>
-                        <Link to="/viewproducts"> <button className='innerbutton mt-3' type="submit" value="Submit" onClick={this.submitForm}>Add Category</button></Link><br />
-                    </form>
-                </div>
-            </div>
+            <
+            label
+            for = "STITCHED" > STITCHED < /label> <
+            input type = "radio"
+            value = "RAW"
+            id = "RAW"
+            onChange = { this.handleChange }
+            name = "ctype" / > < label
+            for = "RAW" > RAW < /label><br / >
+            <
+            /div> <
+            Link to = "/viewproducts" > < button className = 'innerbutton mt-3'
+            type = "submit"
+            value = "Submit"
+            onClick = { this.submitForm } > Add Category < /button></Link > < br / >
+            <
+            /form> <
+            /div> <
+            /div>
 
         )
     }
